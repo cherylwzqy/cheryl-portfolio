@@ -4,10 +4,11 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 
 const categories = [
-  { name: "UX / Service Design", color: "#4F7DFF" },
-  { name: "Interior Design", color: "#E8893A" },
+  { name: "UX / Service Design", color: "var(--color-ux)" },
+  { name: "Interior Design", color: "var(--color-interior)" },
+  // Preserve the existing red until migration to --color-lighting is approved.
   { name: "Lighting / Motion Design", color: "#D93A3A" },
-  { name: "Production Design", color: "#E8024B" },
+  { name: "Production Design", color: "var(--color-production)" },
 ];
 
 type ClickCue = { index: number; phase: "color" | "fade" | "hold" | "restore" };
@@ -35,6 +36,9 @@ export default function Home() {
     cueLocked.current = true;
     setClickCue({ index, phase: "color" });
     if (index === 0) router.prefetch("/ux-service");
+    if (index === 1) router.prefetch("/interior");
+    if (index === 2) router.prefetch("/lighting-motion");
+    if (index === 3) router.prefetch("/production");
   };
 
   useEffect(() => {
@@ -47,6 +51,12 @@ export default function Home() {
       const nextPhase = { color: "fade", fade: "hold", hold: "restore" } as const;
       if (clickCue.phase === "hold" && clickCue.index === 0) {
         router.push("/ux-service");
+      } else if (clickCue.phase === "hold" && clickCue.index === 1) {
+        router.push("/interior");
+      } else if (clickCue.phase === "hold" && clickCue.index === 2) {
+        router.push("/lighting-motion");
+      } else if (clickCue.phase === "hold" && clickCue.index === 3) {
+        router.push("/production");
       } else if (clickCue.phase === "restore") {
         cueLocked.current = false;
         setClickCue(null);
@@ -101,11 +111,11 @@ export default function Home() {
         <div className="spotlight-pool" />
       </div>
       <header className="identity">
-        <h1 className="identity-title">
+        <h1 className="identity-title type-h3">
           <span className="identity-name">CHERYL W.</span>{" "}
           <span className="identity-edition">Portfolio 2026</span>
         </h1>
-        <p className="identity-statement">I believe design creates experiences.</p>
+        <p className="identity-statement type-small">I believe design creates experiences.</p>
       </header>
       <div className="disciplines" onPointerLeave={() => setHovered(null)}>
         {categories.map((category, index) => (
@@ -125,8 +135,8 @@ export default function Home() {
             onFocus={() => setFocused(index)}
             onBlur={() => setFocused(null)}
           >
-            <span className="discipline-number" aria-hidden="true">0{index + 1}</span>
-            <span className="discipline-name">{category.name}</span>
+            <span className="discipline-number type-micro" aria-hidden="true">0{index + 1}</span>
+            <span className="discipline-name type-subtitle type-navigation">{category.name}</span>
           </button>
         ))}
       </div>
@@ -134,7 +144,7 @@ export default function Home() {
         {secondaryLinks.map(({ label, href }) => (
           <a
             key={label}
-            className="secondary-link"
+            className="secondary-link type-micro"
             href={href}
             role={href ? undefined : "link"}
             aria-disabled={href ? undefined : true}
