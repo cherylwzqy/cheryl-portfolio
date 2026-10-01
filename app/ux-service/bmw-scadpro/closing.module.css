@@ -1,0 +1,50 @@
+.closing {
+  padding: clamp(112px, 18svh, 200px) var(--detail-gutter) clamp(48px, 7svh, 80px);
+  background: radial-gradient(ellipse at 85% 0%, rgb(79 125 255 / 0.015), transparent 55%), var(--color-bg);
+}
+.statement {
+  max-width: 28ch;
+  margin: 0;
+  color: var(--color-text-primary);
+  font-weight: var(--type-h1-weight);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  opacity: 0.85;
+}
+.navigation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  margin-top: clamp(112px, 18svh, 200px);
+  letter-spacing: 0.12em;
+  color: var(--color-text-secondary);
+}
+.navigation a, .navigation > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 12px 0;
+  text-decoration: none;
+  transition: color 500ms var(--cue-ease);
+}
+.back { justify-self: start; }
+.home { justify-self: center; }
+.next { justify-self: end; }
+.navigation a:is(:hover, :focus-visible) { color: var(--color-text-primary); }
+.navigation .next:is(:hover, :focus-visible):not([aria-disabled="true"]) { color: var(--color-ux); }
+.arrow { display: inline-block; transition: transform 500ms var(--cue-ease); }
+.next:is(:hover, :focus-visible):not([aria-disabled="true"]) .arrow { transform: translateX(4px); }
+.next[aria-disabled="true"] { opacity: 0.45; cursor: default; }
+.navigation a:focus-visible { outline: 1px solid var(--color-text-muted); outline-offset: 6px; }
+
+@media (max-width: 600px) {
+  .navigation { grid-template-columns: 1fr; gap: 20px; }
+  .navigation > * { justify-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation a, .arrow { transition: none; }
+  .next:is(:hover, :focus-visible):not([aria-disabled="true"]) .arrow { transform: none; }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image, { type StaticImageData } from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./project-stage.module.css";
@@ -14,6 +15,7 @@ type Project = {
   description?: string;
   thumbnail?: StaticImageData;
   titleLanguage?: string;
+  href?: string;
 };
 
 type ProjectStageProps = {
@@ -27,6 +29,7 @@ type Cue = { index: number; phase: "color" | "fade" | "hold" | "restore" };
 const timing = { color: 450, fade: 700, hold: 550, restore: 800 };
 
 export default function ProjectStage({ category, title, introduction, projects }: ProjectStageProps) {
+  const router = useRouter();
   const stageRef = useRef<HTMLElement>(null);
   const rowRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const locked = useRef(false);
@@ -62,22 +65,27 @@ export default function ProjectStage({ category, title, introduction, projects }
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const duration = reduced && cue.phase !== "hold" ? 0 : timing[cue.phase];
     const timer = window.setTimeout(() => {
-      if (cue.phase === "restore") {
+      const destination = projects[cue.index].href;
+      if (cue.phase === "hold" && destination) {
+        router.push(destination);
+      } else if (cue.phase === "restore") {
         locked.current = false;
         setCue(null);
       } else {
-        // Future case-study navigation belongs at the end of the hold.
+        // Projects without a detail page return to their resting state.
         const next = { color: "fade", fade: "hold", hold: "restore" } as const;
         setCue({ index: cue.index, phase: next[cue.phase] });
       }
     }, duration);
     return () => window.clearTimeout(timer);
-  }, [cue]);
+  }, [cue, projects, router]);
 
   const startCue = (index: number) => {
     if (locked.current) return;
     locked.current = true;
     setCue({ index, phase: "color" });
+    const destination = projects[index].href;
+    if (destination) router.prefetch(destination);
   };
 
   const lightStyle = {

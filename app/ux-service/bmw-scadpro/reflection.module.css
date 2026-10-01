@@ -1,0 +1,98 @@
+.reflection {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(88px, 12svh, 144px) var(--detail-gutter) clamp(120px, 18svh, 200px);
+  background: linear-gradient(to bottom, #0b1017, var(--color-bg) 65%);
+}
+
+.reflection::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 95% 18%, rgb(199 218 244 / 0.025), transparent 52%);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 clamp(72px, 12svh, 136px);
+  letter-spacing: 0.16em;
+}
+.label span:first-child { color: var(--color-text-muted); }
+.chapters { display: grid; gap: clamp(120px, 20svh, 224px); }
+.chapter {
+  position: relative;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 60% 32%;
+  column-gap: 8%;
+  row-gap: 40px;
+}
+.chapter > .statement { grid-column: 1 / -1; }
+.chapter .statement { font-size: var(--type-h2-size); }
+.statement { margin: 0; color: var(--color-text-primary); letter-spacing: -0.025em; }
+.study {
+  display: block;
+  position: relative;
+  grid-column: 2;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  cursor: pointer;
+}
+.study svg { display: block; width: 100%; height: auto; }
+.fragment {
+  transform: translate(var(--start-x), var(--start-y));
+  color: #c7daf4;
+  opacity: var(--fragment-opacity);
+  transition: transform 800ms var(--cue-ease), color 800ms var(--cue-ease), opacity 800ms var(--cue-ease);
+}
+.fragment line { stroke: currentColor; stroke-width: 1; }
+.fragment circle { fill: currentColor; }
+.hoverCue {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  text-align: center;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+  transition: opacity 600ms var(--cue-ease) 200ms;
+}
+.study:focus-visible { outline: 1px solid var(--color-text-muted); outline-offset: 8px; }
+.study:is(:focus-visible, [data-active="true"]) .fragment {
+  transform: translate(var(--end-x), var(--end-y));
+  color: var(--color-ux);
+  opacity: 0.8;
+  transition-delay: 80ms, 120ms, 80ms;
+}
+.study:is(:focus-visible, [data-active="true"]) .hoverCue { opacity: 0; transition-delay: 0ms; transition-duration: 300ms; }
+@media (hover: hover) {
+  .study:hover .fragment { transform: translate(var(--end-x), var(--end-y)); color: var(--color-ux); opacity: 0.8; transition-delay: 80ms, 120ms, 80ms; }
+  .study:hover .hoverCue { opacity: 0; transition-delay: 0ms; transition-duration: 300ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fragment, .hoverCue { transition: none; }
+}
+.copy { width: 100%; max-width: 58ch; color: var(--color-text-secondary); }
+.copy p { margin: 0; }
+.copy p + p { margin-top: 24px; }
+
+@media (max-width: 800px) {
+  .chapter { display: block; }
+  .copy { margin-top: 40px; }
+  .study { position: relative; top: auto; right: auto; width: min(260px, 70%); margin: 32px 0 0 auto; }
+}
+
+@media (max-width: 600px) {
+  .label { margin-bottom: 64px; }
+  .chapters { gap: 104px; }
+}

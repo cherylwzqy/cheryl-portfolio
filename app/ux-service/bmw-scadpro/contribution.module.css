@@ -1,0 +1,51 @@
+.contribution {
+  /* The diagram gives way to open space on the same blue-black ground. */
+  background: #0b1017;
+  padding: clamp(64px, 8svh, 88px) var(--detail-gutter) clamp(72px, 10svh, 112px);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 clamp(36px, 5svh, 56px);
+  letter-spacing: 0.16em;
+}
+.label span:first-child { color: var(--color-text-muted); }
+
+.areas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(64px, 8svh, 88px);
+}
+.area {
+  display: grid;
+  grid-template-columns: clamp(64px, 7vw, 96px) minmax(0, 1fr);
+  column-gap: clamp(40px, 5vw, 72px);
+  align-items: start;
+  min-width: 0;
+}
+.index {
+  color: var(--color-text-primary);
+  opacity: 0.09;
+  font-size: calc(var(--type-display-size) * 1.5);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.copy { min-width: 0; }
+.copy .title { font-size: var(--type-h2-size); }
+.title {
+  margin: 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.025em;
+}
+.subtitle {
+  margin: 12px 0 0;
+  color: color-mix(in srgb, var(--color-ux) 75%, var(--color-text-secondary));
+}
+.description { margin: 16px 0 0; max-width: 60ch; color: var(--color-text-secondary); }
+
+@media (max-width: 600px) {
+  .area { grid-template-columns: 40px minmax(0, 1fr); column-gap: 24px; }
+  .index { font-size: var(--type-display-size); }
+}

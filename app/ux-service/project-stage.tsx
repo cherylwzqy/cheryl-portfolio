@@ -12,6 +12,7 @@ const projects = [
   {
     number: "02",
     date: "2024.06",
+    href: "/ux-service/bmw-scadpro",
     title: "BMW × SCADpro",
     subtitle: "Service Blueprint",
     disciplines: "Service Design · Research · Strategy",
