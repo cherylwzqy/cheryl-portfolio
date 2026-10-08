@@ -7,16 +7,28 @@ export default function Closing({ nextProjectHref }: { nextProjectHref?: string 
 
   return (
     <footer className={styles.closing}>
-      <p className={`${styles.statement} type-h2`}>
-        Innovation begins when complexity becomes possibility.
-      </p>
+      <div className={styles.quote}>
+        <p className={styles.eyebrow}>A THOUGHT ON INNOVATION</p>
+        <p className={styles.statement}>
+          “Design thinking is a human-centered approach to innovation.”
+        </p>
+        <span className={styles.accent} aria-hidden="true" />
+        <p className={styles.attribution}>Tim Brown / IDEO</p>
+      </div>
       <nav className={`${styles.navigation} type-micro`} aria-label="Continue exploring">
         <Link href="/ux-service" className={styles.back}>
-          <span aria-hidden="true">←</span> BACK TO UX / SERVICE
+          <span className={styles.light} aria-hidden="true" />
+          <span className={styles.label}><span aria-hidden="true">←</span> BACK TO UX / SERVICE</span>
         </Link>
-        <Link href="/" className={styles.home}>HOME</Link>
+        <Link href="/" className={styles.home}>
+          <span className={styles.light} aria-hidden="true" />
+          <span className={styles.label}>HOME</span>
+        </Link>
         {nextProjectHref ? (
-          <Link href={nextProjectHref} className={styles.next}>{nextLabel}</Link>
+          <Link href={nextProjectHref} className={styles.next}>
+            <span className={styles.light} aria-hidden="true" />
+            <span className={styles.label}>{nextLabel}</span>
+          </Link>
         ) : (
           <span className={styles.next} role="link" aria-disabled="true"
             aria-label="Next project, not available yet" title="Next project is not available yet">
