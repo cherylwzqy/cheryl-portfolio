@@ -1,0 +1,77 @@
+/* [project]/app/ux-service/bmw-scadpro/closing.module.css [app-client] (css) */
+.closing-module__c0l4sG__contribution {
+  padding: clamp(64px, 8svh, 88px) var(--detail-gutter) clamp(72px, 10svh, 112px);
+  background: #0b1017;
+}
+
+.closing-module__c0l4sG__label {
+  letter-spacing: .16em;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 clamp(36px, 5svh, 56px);
+  display: flex;
+}
+
+.closing-module__c0l4sG__label span:first-child {
+  color: var(--color-text-muted);
+}
+
+.closing-module__c0l4sG__areas {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(64px, 8svh, 88px);
+  display: grid;
+}
+
+.closing-module__c0l4sG__area {
+  grid-template-columns: clamp(64px, 7vw, 96px) minmax(0, 1fr);
+  align-items: start;
+  column-gap: clamp(40px, 5vw, 72px);
+  min-width: 0;
+  display: grid;
+}
+
+.closing-module__c0l4sG__index {
+  color: var(--color-text-primary);
+  opacity: .09;
+  font-size: calc(var(--type-display-size) * 1.5);
+  letter-spacing: -.025em;
+  line-height: 1;
+}
+
+.closing-module__c0l4sG__copy {
+  min-width: 0;
+}
+
+.closing-module__c0l4sG__copy .closing-module__c0l4sG__title {
+  font-size: var(--type-h2-size);
+}
+
+.closing-module__c0l4sG__title {
+  color: var(--color-text-primary);
+  letter-spacing: -.025em;
+  margin: 0;
+}
+
+.closing-module__c0l4sG__subtitle {
+  color: color-mix(in srgb, var(--color-ux) 75%, var(--color-text-secondary));
+  margin: 12px 0 0;
+}
+
+.closing-module__c0l4sG__description {
+  max-width: 60ch;
+  color: var(--color-text-secondary);
+  margin: 16px 0 0;
+}
+
+@media (max-width: 600px) {
+  .closing-module__c0l4sG__area {
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 24px;
+  }
+
+  .closing-module__c0l4sG__index {
+    font-size: var(--type-display-size);
+  }
+}
+
+/*# sourceMappingURL=app_ux-service_bmw-scadpro_closing_module_css_1igg3k2._.single.css.map*/

@@ -1,0 +1,391 @@
+@import "tailwindcss";
+
+/* Global palette. Nonmatching legacy colors remain unchanged pending review. */
+:root {
+  --color-bg: #0A0A0A;
+  --color-text-primary: #F2F0EA;
+  --color-text-secondary: #A09E98;
+  --color-text-muted: #66645F;
+  --color-divider: #292927;
+
+  --color-light: #F2F0EA;
+
+  --color-ux: #4F7DFF;
+  --color-interior: #E8893A;
+  --color-lighting: #E54848;
+  --color-production: #E8024B;
+}
+
+/* Shared type scale: desktop targets at 1280px; fluid sizes below. */
+:root {
+  --font-english: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-chinese: "Songti SC", "STSong", "SimSun", serif;
+  --type-display-size: clamp(32px, calc(26.6667px + 1.6667vw), 48px);
+  --type-display-weight: 500;
+  --type-display-leading: 1.1;
+  --type-h1-size: clamp(24px, calc(20.0000px + 1.2500vw), 36px);
+  --type-h1-weight: 400;
+  --type-h1-leading: 1.2;
+  --type-h2-size: clamp(22px, calc(20.0000px + 0.6250vw), 28px);
+  --type-h2-weight: 500;
+  --type-h2-leading: 1.25;
+  --type-h3-size: clamp(18px, calc(16.0000px + 0.6250vw), 24px);
+  --type-h3-weight: 600;
+  --type-h3-leading: 1.3;
+  --type-subtitle-size: clamp(16px, calc(14.6667px + 0.4167vw), 20px);
+  --type-subtitle-weight: 400;
+  --type-subtitle-leading: 1.4;
+  --type-body-size: clamp(14px, calc(13.3333px + 0.2083vw), 16px);
+  --type-body-weight: 400;
+  --type-body-leading: 1.6;
+  --type-small-size: clamp(12px, calc(11.3333px + 0.2083vw), 14px);
+  --type-small-weight: 400;
+  --type-small-leading: 1.5;
+  --type-micro-size: clamp(11px, calc(10.6667px + 0.1042vw), 12px);
+  --type-micro-weight: 400;
+  --type-micro-leading: 1.4;
+}
+
+.type-display {
+  font-family: var(--font-english);
+  font-size: var(--type-display-size);
+  font-weight: var(--type-display-weight);
+  line-height: var(--type-display-leading);
+}
+
+.type-h1 {
+  font-family: var(--font-english);
+  font-size: var(--type-h1-size);
+  font-weight: var(--type-h1-weight);
+  line-height: var(--type-h1-leading);
+}
+
+.type-h2 {
+  font-family: var(--font-english);
+  font-size: var(--type-h2-size);
+  font-weight: var(--type-h2-weight);
+  line-height: var(--type-h2-leading);
+}
+
+.type-h3 {
+  font-family: var(--font-english);
+  font-size: var(--type-h3-size);
+  font-weight: var(--type-h3-weight);
+  line-height: var(--type-h3-leading);
+}
+
+.type-subtitle {
+  font-family: var(--font-english);
+  font-size: var(--type-subtitle-size);
+  font-weight: var(--type-subtitle-weight);
+  line-height: var(--type-subtitle-leading);
+}
+
+.type-body {
+  font-family: var(--font-english);
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-leading);
+}
+
+.type-small {
+  font-family: var(--font-english);
+  font-size: var(--type-small-size);
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-leading);
+}
+
+.type-micro {
+  font-family: var(--font-english);
+  font-size: var(--type-micro-size);
+  font-weight: var(--type-micro-weight);
+  line-height: var(--type-micro-leading);
+}
+
+/* Language overrides only family/weight, retaining the chosen type level. */
+.type-chinese, :lang(zh) {
+  font-family: var(--font-chinese);
+  font-weight: 400;
+}
+
+/* Keep the existing four-column navigation compact on narrower screens. */
+@media (min-width: 701px) and (max-width: 1200px) {
+  .type-navigation { font-size: clamp(11px, 1.22vw, 20px); }
+}
+@media (max-width: 700px) {
+  .type-navigation { font-size: clamp(10px, 2.5vw, 16px); }
+}
+
+
+/* One inherited value colors the existing beam and feathered haze. */
+@property --cue-blend {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+:root {
+  color-scheme: dark;
+  background: var(--color-bg);
+  color: #8c8983;
+  font-family: var(--font-english);
+  -webkit-font-smoothing: antialiased;
+  --cue-duration: 800ms;
+  --cue-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  min-height: 320px;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--cue-duration) var(--cue-ease);
+}
+
+.stage[data-lit="true"] .spotlight { opacity: 1; }
+
+/* A continuous angular falloff gives the beam feathered sides without a
+   clipped triangle. The mask dissipates it as it reaches the stage floor. */
+.spotlight-beam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(300px, 38vw, 650px);
+  height: var(--target-y);
+  transform-origin: 50% 0;
+  transform: translateX(-50%) skewX(var(--beam-angle));
+  background: conic-gradient(
+    from 0deg at 50% 0%,
+    transparent 157deg,
+    color-mix(in srgb, rgb(245 233 208 / 0.025), rgb(from var(--category-color) r g b / 0.03125) var(--cue-blend)) 164deg,
+    color-mix(in srgb, rgb(245 233 208 / 0.10), rgb(from var(--category-color) r g b / 0.125) var(--cue-blend)) 173deg,
+    color-mix(in srgb, rgb(250 240 220 / 0.20), rgb(from var(--category-color) r g b / 0.25) var(--cue-blend)) 180deg,
+    color-mix(in srgb, rgb(245 233 208 / 0.10), rgb(from var(--category-color) r g b / 0.125) var(--cue-blend)) 187deg,
+    color-mix(in srgb, rgb(245 233 208 / 0.025), rgb(from var(--category-color) r g b / 0.03125) var(--cue-blend)) 196deg,
+    transparent 203deg
+  );
+  mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 65%, rgb(0 0 0 / 0.6) 85%, transparent);
+  filter: blur(14px);
+  transition: transform var(--cue-duration) var(--cue-ease), height var(--cue-duration) var(--cue-ease);
+  will-change: transform;
+}
+
+.spotlight-pool {
+  position: absolute;
+  left: var(--target-x);
+  top: var(--target-y);
+  width: clamp(280px, 29vw, 480px);
+  height: clamp(120px, 19vh, 210px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, color-mix(in srgb, rgb(250 236 207 / 0.20), rgb(from var(--category-color) r g b / 0.25) var(--cue-blend)) 0%, color-mix(in srgb, rgb(241 226 198 / 0.10), rgb(from var(--category-color) r g b / 0.125) var(--cue-blend)) 28%, color-mix(in srgb, rgb(236 220 191 / 0.03), rgb(from var(--category-color) r g b / 0.0375) var(--cue-blend)) 51%, transparent 72%);
+  filter: blur(15px);
+  transition: left var(--cue-duration) var(--cue-ease), top var(--cue-duration) var(--cue-ease);
+}
+
+.disciplines {
+  position: absolute;
+  z-index: 1;
+  top: 55%;
+  left: 7%;
+  width: 86%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  transform: translateY(-50%);
+}
+
+.discipline {
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 48px 10px;
+  color: #8c8983;
+  font: inherit;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(10px, 1.1vw, 20px);
+  cursor: default;
+  transition: color var(--cue-duration) var(--cue-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.discipline-number {
+  letter-spacing: 0.08em;
+  color: #605d57;
+  transition: color var(--cue-duration) var(--cue-ease);
+}
+
+.discipline-name {
+  white-space: nowrap;
+  letter-spacing: -0.025em;
+  text-align: left;
+}
+
+.stage[data-lit="true"] .discipline { color: #55534f; }
+.stage[data-lit="true"] .discipline[data-active="true"] { color: #e5dfd3; }
+.discipline[data-active="true"] .discipline-number { color: #aba18e; }
+.discipline:focus-visible { outline: 1px solid #797368; outline-offset: -20px; }
+
+@media (max-width: 700px) {
+  .disciplines { left: 5%; width: 90%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .discipline { padding: 28px 8px; justify-content: flex-start; }
+  .spotlight-beam { width: 300px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --cue-duration: 0ms; }
+}
+
+.identity {
+  position: absolute;
+  z-index: 1;
+  top: 13%;
+  left: 50%;
+  width: max-content;
+  max-width: 90%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.identity-title {
+  margin: 0;
+  color: #d5d3ce;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.identity-name { font-weight: var(--type-h3-weight); }
+.identity-edition { margin-left: 0.35em; font-weight: var(--type-subtitle-weight); }
+
+.identity-statement {
+  margin: clamp(20px, 3vh, 30px) 0 0;
+  color: #84827e;
+  letter-spacing: 0.015em;
+}
+
+.secondary-links {
+  position: absolute;
+  z-index: 1;
+  bottom: 8%;
+  left: 12%;
+  right: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.secondary-link {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 88px;
+  min-height: 44px;
+  padding: 12px;
+  color: #aaa8a2;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color var(--cue-duration) var(--cue-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.secondary-label { position: relative; }
+
+/* Separate the entrance fade from the slow breathing so leaving the link
+   pauses the light where it is, then fades it out without a jump. */
+.secondary-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(150px, 15vw, 210px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--cue-duration) var(--cue-ease);
+}
+
+.secondary-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* 1.75x peak alpha, with a wider, diffused halo shared by all secondary links. */
+  background: radial-gradient(circle, rgba(from var(--color-light) r g b / 0.378) 0%, rgba(from var(--color-light) r g b / 0.1771875) 28%, rgba(from var(--color-light) r g b / 0.04725) 50%, transparent 72%);
+  filter: blur(16px);
+  animation: secondary-breathe 3s ease-in-out 800ms infinite both;
+  animation-play-state: paused;
+}
+
+.secondary-link:is(:hover, :focus-visible) { color: #e5e3dd; }
+.secondary-link:is(:hover, :focus-visible) .secondary-light { opacity: 1; }
+.secondary-link:is(:hover, :focus-visible) .secondary-light::before { animation-play-state: running; }
+.secondary-link:focus-visible { outline: none; }
+
+@keyframes secondary-breathe {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .secondary-light::before { animation: none; }
+}
+
+/* Click cues own color and visibility only; hover geometry stays intact. */
+.spotlight {
+  --cue-blend: 0%;
+  transition: opacity var(--cue-duration) var(--cue-ease),
+    --cue-blend var(--color-duration) var(--cue-ease);
+}
+
+.stage:is([data-cue="color"], [data-cue="fade"], [data-cue="hold"]) .spotlight {
+  --cue-blend: 100%;
+}
+
+.identity, .secondary-links {
+  transition: opacity var(--content-duration) var(--cue-ease);
+}
+
+.discipline {
+  transition: color var(--cue-duration) var(--cue-ease),
+    opacity var(--content-duration) var(--cue-ease);
+}
+
+.stage:is([data-cue="fade"], [data-cue="hold"]) :is(.identity, .secondary-links),
+.stage:is([data-cue="fade"], [data-cue="hold"]) .discipline:not([data-active="true"]) {
+  opacity: 0;
+}
+
+.stage:is([data-cue="color"], [data-cue="fade"], [data-cue="hold"]) .discipline[data-active="true"] {
+  color: color-mix(in srgb, #fff 88%, var(--category-color));
+}
+
+.stage[data-cue="restore"] :is(.identity, .secondary-links, .discipline) {
+  transition-duration: var(--restore-duration);
+}
+
+.stage[data-cue="restore"] .spotlight {
+  transition-duration: var(--restore-duration);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage .spotlight, .stage .identity, .stage .secondary-links, .stage .discipline {
+    transition-duration: 0ms;
+  }
+}

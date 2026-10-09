@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Closing from "./closing";
+import CaseStudyFooter from "../../components/project-detail/case-study-footer";
 import Contribution from "./contribution";
 import Reflection from "./reflection";
 import { MyRole, Process } from "./chapters";
@@ -33,6 +34,7 @@ export default function BMWScadproPage() {
       <Contribution />
       <Reflection />
       <Closing />
+      <CaseStudyFooter theme="dark" backHref="/ux-service" backLabel="BACK TO UX / SERVICE" previousProjectHref="/ux-service/links2wellbeing" />
     </ProjectDetail>
   );
 }

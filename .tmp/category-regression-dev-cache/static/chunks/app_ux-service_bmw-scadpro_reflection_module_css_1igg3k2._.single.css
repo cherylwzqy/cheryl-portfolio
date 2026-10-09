@@ -1,0 +1,175 @@
+/* [project]/app/ux-service/bmw-scadpro/reflection.module.css [app-client] (css) */
+.reflection-module__4y0ywa__detail {
+  --detail-gutter: 12%;
+  isolation: isolate;
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  position: relative;
+  overflow: clip;
+}
+
+.reflection-module__4y0ywa__navigation {
+  z-index: 2;
+  top: clamp(24px, 5svh, 56px);
+  left: var(--detail-gutter);
+  right: var(--detail-gutter);
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  display: flex;
+  position: absolute;
+}
+
+.reflection-module__4y0ywa__navigation a:first-child {
+  padding-left: 0;
+}
+
+.reflection-module__4y0ywa__navigation a:last-child {
+  padding-right: 0;
+}
+
+.reflection-module__4y0ywa__navigation a:focus-visible {
+  outline: 1px solid var(--color-text-muted);
+  outline-offset: 4px;
+}
+
+.reflection-module__4y0ywa__hero {
+  isolation: isolate;
+  min-height: max(640px, 100svh);
+  padding: 160px var(--detail-gutter) 120px;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.reflection-module__4y0ywa__light {
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(at 104% 0, #c7daf417, #a2bfe609 32%, #0000 66%);
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(#000 45%, #0000 100%);
+  mask-image: linear-gradient(#000 45%, #0000 100%);
+}
+
+.reflection-module__4y0ywa__heroContent {
+  width: 100%;
+}
+
+.reflection-module__4y0ywa__eyebrow {
+  letter-spacing: .16em;
+  margin: 0 0 clamp(40px, 7svh, 80px);
+}
+
+.reflection-module__4y0ywa__title {
+  color: var(--color-text-primary);
+  letter-spacing: -.025em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.reflection-module__4y0ywa__subtitle {
+  color: var(--color-ux);
+  margin: 18px 0 0;
+}
+
+.reflection-module__4y0ywa__details {
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  max-width: 660px;
+  margin-top: clamp(44px, 8svh, 88px);
+  display: flex;
+}
+
+.reflection-module__4y0ywa__details p {
+  margin: 0;
+}
+
+.reflection-module__4y0ywa__details p:last-child {
+  color: var(--color-text-muted);
+  letter-spacing: .12em;
+  opacity: .85;
+}
+
+.reflection-module__4y0ywa__section {
+  background: linear-gradient(to bottom, var(--color-bg), #0b1017 45%);
+  padding: clamp(88px, 14svh, 160px) var(--detail-gutter) clamp(120px, 20svh, 220px);
+}
+
+.reflection-module__4y0ywa__sectionLabel {
+  letter-spacing: .16em;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 clamp(48px, 8svh, 88px);
+  display: flex;
+}
+
+.reflection-module__4y0ywa__sectionLabel span:first-child {
+  color: var(--color-text-muted);
+}
+
+.reflection-module__4y0ywa__split {
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(40px, 7vw, 112px);
+  display: grid;
+}
+
+.reflection-module__4y0ywa__statement {
+  color: var(--color-text-primary);
+  letter-spacing: -.025em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.reflection-module__4y0ywa__copy {
+  max-width: 46ch;
+}
+
+.reflection-module__4y0ywa__copy p {
+  margin: 0;
+}
+
+.reflection-module__4y0ywa__copy .reflection-module__4y0ywa__note {
+  color: var(--color-text-secondary);
+  margin-top: 40px;
+}
+
+.reflection-module__4y0ywa__note p:first-child {
+  opacity: .65;
+}
+
+.reflection-module__4y0ywa__note p + p {
+  color: var(--color-ux);
+  margin-top: 18px;
+}
+
+@media (max-width: 800px) {
+  .reflection-module__4y0ywa__detail {
+    --detail-gutter: 8%;
+  }
+
+  .reflection-module__4y0ywa__split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 540px) {
+  .reflection-module__4y0ywa__hero {
+    min-height: 100svh;
+    padding-top: 160px;
+    padding-bottom: 100px;
+  }
+
+  .reflection-module__4y0ywa__details {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .reflection-module__4y0ywa__navigation {
+    gap: 12px;
+  }
+}
+
+/*# sourceMappingURL=app_ux-service_bmw-scadpro_reflection_module_css_1igg3k2._.single.css.map*/

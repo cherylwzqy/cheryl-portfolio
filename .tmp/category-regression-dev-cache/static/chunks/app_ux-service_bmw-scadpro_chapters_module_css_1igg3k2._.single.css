@@ -1,0 +1,186 @@
+/* [project]/app/ux-service/bmw-scadpro/chapters.module.css [app-client] (css) */
+.chapters-module__nAimZW__reflection {
+  isolation: isolate;
+  padding: clamp(88px, 12svh, 144px) var(--detail-gutter) clamp(120px, 18svh, 200px);
+  background: linear-gradient(to bottom, #0b1017, var(--color-bg) 65%);
+  position: relative;
+}
+
+.chapters-module__nAimZW__reflection:before {
+  content: "";
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(at 95% 18%, #c7daf406, #0000 52%);
+  position: absolute;
+  inset: 0;
+}
+
+.chapters-module__nAimZW__label {
+  letter-spacing: .16em;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 clamp(72px, 12svh, 136px);
+  display: flex;
+}
+
+.chapters-module__nAimZW__label span:first-child {
+  color: var(--color-text-muted);
+}
+
+.chapters-module__nAimZW__chapters {
+  gap: clamp(120px, 20svh, 224px);
+  display: grid;
+}
+
+.chapters-module__nAimZW__chapter {
+  grid-template-columns: 60% 32%;
+  gap: 40px 8%;
+  min-width: 0;
+  display: grid;
+  position: relative;
+}
+
+.chapters-module__nAimZW__chapter > .chapters-module__nAimZW__statement {
+  grid-column: 1 / -1;
+}
+
+.chapters-module__nAimZW__chapter .chapters-module__nAimZW__statement {
+  font-size: var(--type-h2-size);
+}
+
+.chapters-module__nAimZW__statement {
+  color: var(--color-text-primary);
+  letter-spacing: -.025em;
+  margin: 0;
+}
+
+.chapters-module__nAimZW__study {
+  cursor: pointer;
+  grid-column: 2;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  overflow: visible;
+}
+
+.chapters-module__nAimZW__study svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chapters-module__nAimZW__fragment {
+  transform: translate(var(--start-x), var(--start-y));
+  color: #c7daf4;
+  opacity: var(--fragment-opacity);
+  transition: transform .8s var(--cue-ease), color .8s var(--cue-ease), opacity .8s var(--cue-ease);
+}
+
+.chapters-module__nAimZW__fragment line {
+  stroke: currentColor;
+  stroke-width: 1px;
+}
+
+.chapters-module__nAimZW__fragment circle {
+  fill: currentColor;
+}
+
+.chapters-module__nAimZW__hoverCue {
+  pointer-events: none;
+  text-align: center;
+  letter-spacing: .08em;
+  width: 100%;
+  color: var(--color-text-secondary);
+  opacity: .6;
+  transition: opacity .6s var(--cue-ease) .2s;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chapters-module__nAimZW__study:focus-visible {
+  outline: 1px solid var(--color-text-muted);
+  outline-offset: 8px;
+}
+
+.chapters-module__nAimZW__study:is(:focus-visible, [data-active="true"]) .chapters-module__nAimZW__fragment {
+  transform: translate(var(--end-x), var(--end-y));
+  color: var(--color-ux);
+  opacity: .8;
+  transition-delay: 80ms, .12s, 80ms;
+}
+
+.chapters-module__nAimZW__study:is(:focus-visible, [data-active="true"]) .chapters-module__nAimZW__hoverCue {
+  opacity: 0;
+  transition-duration: .3s;
+  transition-delay: 0s;
+}
+
+@media (hover: hover) {
+  .chapters-module__nAimZW__study:hover .chapters-module__nAimZW__fragment {
+    transform: translate(var(--end-x), var(--end-y));
+    color: var(--color-ux);
+    opacity: .8;
+    transition-delay: 80ms, .12s, 80ms;
+  }
+
+  .chapters-module__nAimZW__study:hover .chapters-module__nAimZW__hoverCue {
+    opacity: 0;
+    transition-duration: .3s;
+    transition-delay: 0s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapters-module__nAimZW__fragment, .chapters-module__nAimZW__hoverCue {
+    transition: none;
+  }
+}
+
+.chapters-module__nAimZW__copy {
+  width: 100%;
+  max-width: 58ch;
+  color: var(--color-text-secondary);
+}
+
+.chapters-module__nAimZW__copy p {
+  margin: 0;
+}
+
+.chapters-module__nAimZW__copy p + p {
+  margin-top: 24px;
+}
+
+@media (max-width: 800px) {
+  .chapters-module__nAimZW__chapter {
+    display: block;
+  }
+
+  .chapters-module__nAimZW__copy {
+    margin-top: 40px;
+  }
+
+  .chapters-module__nAimZW__study {
+    width: min(260px, 70%);
+    margin: 32px 0 0 auto;
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .chapters-module__nAimZW__label {
+    margin-bottom: 64px;
+  }
+
+  .chapters-module__nAimZW__chapters {
+    gap: 104px;
+  }
+}
+
+/*# sourceMappingURL=app_ux-service_bmw-scadpro_chapters_module_css_1igg3k2._.single.css.map*/

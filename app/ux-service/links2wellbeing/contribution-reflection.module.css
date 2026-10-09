@@ -1,0 +1,60 @@
+.section { border-top: 1px solid var(--l2w-line); padding: clamp(48px, 6vw, 88px) 0 clamp(72px, 8vw, 120px); }
+.label { margin: 0 0 32px; letter-spacing: 0.16em; color: var(--l2w-teal-dark); }
+.heading { margin: 0; }
+.introduction { margin: 24px 0 0; max-width: 78ch; color: var(--l2w-supporting); }
+.progression { margin-top: 48px; }
+.timeline { display: block; width: 100%; height: auto; overflow: visible; pointer-events: none; }
+.curve { stroke-width: 3; stroke-dasharray: 1; stroke-linecap: round; }
+.orange { --phase-color: var(--l2w-orange); }
+.rose { --phase-color: var(--l2w-rose); }
+.purple { --phase-color: var(--l2w-purple); }
+.teal { --phase-color: var(--l2w-teal); }
+.connector { stroke: var(--phase-color); stroke-width: 1; stroke-dasharray: 2 5; opacity: 0.4; }
+.milestone { fill: var(--phase-color); stroke: white; stroke-width: 1.5; filter: drop-shadow(0 0 4px color-mix(in srgb, var(--phase-color) 30%, transparent)); transition: filter 300ms ease; }
+.phaseArc { stroke: var(--phase-color); stroke-width: 5; opacity: 0; transition: opacity 300ms ease; }
+.travelingLight { pointer-events: none; visibility: hidden; }
+.phases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+.phase { min-width: 0; padding-inline: 14px; display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 16px; }
+.weeks { margin: 0; color: var(--phase-color); letter-spacing: 0.12em; text-align: center; }
+.phase h3 { margin: 0; color: color-mix(in srgb, var(--phase-color) 85%, var(--l2w-ink)); transition: color 300ms ease; }
+.phaseDescription { margin: 0; color: var(--l2w-supporting); }
+.panel { margin-top: 8px; padding: 20px 16px; border-radius: 10px; background: color-mix(in srgb, var(--phase-color) 6%, transparent); transition: background 300ms ease; }
+.panel h4 { margin: 0 0 16px; color: var(--phase-color); letter-spacing: 0.1em; }
+.panel ul { display: grid; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.panel li { display: grid; grid-template-columns: 4px minmax(0, 1fr); gap: 8px; }
+.panel li::before { content: ""; width: 4px; height: 4px; margin-top: 0.65em; border-radius: 50%; background: var(--phase-color); }
+.phase:hover h3 { color: var(--phase-color); }
+.phase:hover .panel { background: color-mix(in srgb, var(--phase-color) 10%, transparent); }
+.progression:has(.phase:nth-child(1):hover) .markerGroup:nth-of-type(1) .milestone,
+.progression:has(.phase:nth-child(2):hover) .markerGroup:nth-of-type(2) .milestone,
+.progression:has(.phase:nth-child(3):hover) .markerGroup:nth-of-type(3) .milestone,
+.progression:has(.phase:nth-child(4):hover) .markerGroup:nth-of-type(4) .milestone { filter: drop-shadow(0 0 7px color-mix(in srgb, var(--phase-color) 65%, transparent)); }
+.progression:has(.phase:nth-child(1):hover) .markerGroup:nth-of-type(1) .phaseArc,
+.progression:has(.phase:nth-child(2):hover) .markerGroup:nth-of-type(2) .phaseArc,
+.progression:has(.phase:nth-child(3):hover) .markerGroup:nth-of-type(3) .phaseArc,
+.progression:has(.phase:nth-child(4):hover) .markerGroup:nth-of-type(4) .phaseArc { opacity: 0.3; }
+.reflection { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--l2w-line); }
+.reflection > h3 { margin: 0; color: var(--l2w-teal-dark); }
+.reflectionIntroduction { margin: 20px 0 0; max-width: 78ch; color: var(--l2w-supporting); }
+.reflections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 40px; }
+.icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: color-mix(in srgb, var(--phase-color) 8%, transparent); }
+.icon svg { width: 28px; height: 28px; stroke: var(--phase-color); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.reflections h4 { margin: 20px 0 0; color: var(--phase-color); }
+.reflections p { margin: 16px 0 0; color: var(--l2w-supporting); }
+@media (max-width: 1000px) {
+  .timeline { display: none; }
+  .phases { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+  .phase { display: block; padding-left: 24px; border-left: 1px dotted var(--phase-color); position: relative; }
+  .phase::before { content: ""; position: absolute; left: -8px; top: 0; width: 15px; height: 15px; border: 1px solid white; border-radius: 50%; background: var(--phase-color); }
+  .weeks { text-align: left; margin-bottom: 16px; }
+  .phaseDescription { margin-top: 16px; }
+  .panel { margin-top: 24px; }
+  .reflections { gap: 28px; }
+}
+@media (max-width: 540px) {
+  .phases, .reflections { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .travelingLight { display: none; }
+  .milestone, .phaseArc, .phase h3, .panel { transition: none; }
+}

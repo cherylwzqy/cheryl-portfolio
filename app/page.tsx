@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const categories = [
   { name: "UX / Service Design", color: "var(--color-ux)" },
@@ -14,9 +15,9 @@ const categories = [
 type ClickCue = { index: number; phase: "color" | "fade" | "hold" | "restore" };
 const cueTiming = { color: 450, fade: 700, hold: 550, restore: 800 };
 
-// Add the destination URLs when the resume and contact details are supplied.
+// Add the contact destination when its details are supplied.
 const secondaryLinks: { label: string; href?: string }[] = [
-  { label: "RESUME" },
+  { label: "RESUME", href: "/resume" },
   { label: "CONTACT" },
 ];
 
@@ -141,7 +142,12 @@ export default function Home() {
         ))}
       </div>
       <div className="secondary-links" inert={clickCue !== null}>
-        {secondaryLinks.map(({ label, href }) => (
+        {secondaryLinks.map(({ label, href }) => href ? (
+          <Link key={label} className="secondary-link type-micro" href={href} tabIndex={0}>
+            <span className="secondary-light" aria-hidden="true" />
+            <span className="secondary-label">{label}</span>
+          </Link>
+        ) : (
           <a
             key={label}
             className="secondary-link type-micro"

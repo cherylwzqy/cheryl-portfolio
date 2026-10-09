@@ -14,6 +14,15 @@
   --color-interior: #E8893A;
   --color-lighting: #E54848;
   --color-production: #E8024B;
+
+  /* Links2Wellbeing project palette; applied only by its detail page. */
+  --l2w-teal: #2C7A7B;
+  --l2w-teal-dark: #136163;
+  --l2w-orange: #D88A4B;
+  --l2w-rose: #C05656;
+  --l2w-purple: #6D4D81;
+  --l2w-white: #FFFFFF;
+  --l2w-black: #000000;
 }
 
 /* Shared type scale: desktop targets at 1280px; fluid sizes below. */

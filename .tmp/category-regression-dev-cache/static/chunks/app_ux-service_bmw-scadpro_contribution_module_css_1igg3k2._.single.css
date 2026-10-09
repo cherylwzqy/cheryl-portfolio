@@ -1,0 +1,296 @@
+/* [project]/app/ux-service/bmw-scadpro/contribution.module.css [app-client] (css) */
+.contribution-module__TWKVxa__stage {
+  --project-row-height: calc(max(900px, 100svh) * .58 / 3);
+  --project-row-padding: 22px;
+  --project-date-gap: 12px;
+  --project-subtitle-gap: 3px;
+  --project-metadata-gap: 14px;
+  isolation: isolate;
+  background: var(--color-bg);
+  color: #aaa7a1;
+  width: 100%;
+  height: 100svh;
+  min-height: 900px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contribution-module__TWKVxa__header {
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  top: max(69.6px, 12svh);
+  left: 8%;
+  right: 8%;
+}
+
+.contribution-module__TWKVxa__header h1 {
+  letter-spacing: .065em;
+  color: #d5d3ce;
+  margin: 0;
+  font-size: clamp(22px, 18px + 1.09375vw, 32px);
+}
+
+.contribution-module__TWKVxa__header p {
+  color: #84827e;
+  margin: 25px 0 0;
+}
+
+.contribution-module__TWKVxa__projects {
+  z-index: 1;
+  grid-template-rows: repeat(var(--project-count), minmax(var(--project-row-height), 1fr));
+  width: 76%;
+  height: auto;
+  display: grid;
+  position: absolute;
+  top: 28%;
+  left: 12%;
+}
+
+.contribution-module__TWKVxa__project {
+  appearance: none;
+  padding: var(--project-row-padding) 0;
+  color: #b4b1ab;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--cue-duration) var(--cue-ease), opacity var(--fade-time) var(--cue-ease);
+  background: none;
+  border: 0;
+  border-radius: 0;
+  grid-template-columns: 60% 33%;
+  align-content: center;
+  align-items: last baseline;
+  gap: 7%;
+  display: grid;
+}
+
+.contribution-module__TWKVxa__information {
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+}
+
+.contribution-module__TWKVxa__date {
+  letter-spacing: .08em;
+  opacity: .55;
+  margin-bottom: var(--project-date-gap);
+}
+
+.contribution-module__TWKVxa__title {
+  letter-spacing: -.025em;
+}
+
+.contribution-module__TWKVxa__subtitle {
+  margin-top: var(--project-subtitle-gap);
+  opacity: .88;
+  color: var(--category-accent);
+}
+
+.contribution-module__TWKVxa__metadata {
+  opacity: .55;
+  margin-top: var(--project-metadata-gap);
+}
+
+.contribution-module__TWKVxa__description {
+  font-synthesis: none;
+  letter-spacing: .04em;
+  opacity: .65;
+  text-align: right;
+  text-wrap: pretty;
+}
+
+.contribution-module__TWKVxa__divider {
+  pointer-events: none;
+  background: #ffffff1f;
+  height: 1px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.contribution-module__TWKVxa__home {
+  z-index: 1;
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.contribution-module__TWKVxa__light {
+  pointer-events: none;
+  opacity: 0;
+  --cue-blend: 0%;
+  transition: opacity var(--cue-duration) var(--cue-ease), --cue-blend var(--color-time) var(--cue-ease);
+  position: absolute;
+  inset: 0;
+}
+
+.contribution-module__TWKVxa__beam {
+  transform-origin: 0;
+  width: 96vw;
+  height: clamp(280px, 38vh, 460px);
+  transform: translateY(-50%) skewY(var(--project-angle));
+  background: conic-gradient(from 0deg at 0% 50%,
+    transparent 74deg,
+    color-mix(in srgb, #f5e9d006, rgba(from var(--category-accent) r g b / .03125) var(--cue-blend)) 80deg,
+    color-mix(in srgb, #f5e9d01a, rgba(from var(--category-accent) r g b / .125) var(--cue-blend)) 87deg,
+    color-mix(in srgb, #faf0dc33, rgba(from var(--category-accent) r g b / .25) var(--cue-blend)) 90deg,
+    color-mix(in srgb, #f5e9d01a, rgba(from var(--category-accent) r g b / .125) var(--cue-blend)) 93deg,
+    color-mix(in srgb, #f5e9d006, rgba(from var(--category-accent) r g b / .03125) var(--cue-blend)) 100deg,
+    transparent 106deg);
+  filter: blur(14px);
+  transition: transform var(--cue-duration) var(--cue-ease);
+  position: absolute;
+  top: 56%;
+  left: 0;
+  -webkit-mask-image: linear-gradient(to right, #0000, #000 8% 48%, #0009 76%, #0000);
+  mask-image: linear-gradient(to right, #0000, #000 8% 48%, #0009 76%, #0000);
+}
+
+.contribution-module__TWKVxa__pool {
+  left: var(--project-x);
+  top: var(--project-y);
+  background: radial-gradient(ellipse,
+    color-mix(in srgb, #faeccf1f, rgba(from var(--category-accent) r g b / .15) var(--cue-blend)) 0%,
+    color-mix(in srgb, #f1e2c612, rgba(from var(--category-accent) r g b / .0875) var(--cue-blend)) 28%,
+    color-mix(in srgb, #ecdcbf05, rgba(from var(--category-accent) r g b / .025) var(--cue-blend)) 51%, transparent 72%);
+  filter: blur(15px);
+  width: 92vw;
+  height: clamp(160px, 24vh, 260px);
+  transition: left var(--cue-duration) var(--cue-ease), top var(--cue-duration) var(--cue-ease);
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.contribution-module__TWKVxa__stage[data-lit="true"] .contribution-module__TWKVxa__light {
+  opacity: 1;
+}
+
+.contribution-module__TWKVxa__stage[data-lit="true"] .contribution-module__TWKVxa__project {
+  color: #686560;
+}
+
+.contribution-module__TWKVxa__stage[data-lit="true"] .contribution-module__TWKVxa__project[data-active="true"] {
+  color: #e5dfd3;
+}
+
+.contribution-module__TWKVxa__project:focus-visible {
+  outline-offset: 8px;
+  outline: 1px solid #797368;
+}
+
+.contribution-module__TWKVxa__header, .contribution-module__TWKVxa__home, .contribution-module__TWKVxa__divider {
+  transition: opacity var(--fade-time) var(--cue-ease);
+}
+
+.contribution-module__TWKVxa__stage:is([data-cue="color"], [data-cue="fade"], [data-cue="hold"]) .contribution-module__TWKVxa__light {
+  --cue-blend: 100%;
+}
+
+.contribution-module__TWKVxa__stage:is([data-cue="color"], [data-cue="fade"], [data-cue="hold"]) .contribution-module__TWKVxa__project[data-active="true"] {
+  color: color-mix(in srgb, #fff 88%, var(--category-accent));
+}
+
+.contribution-module__TWKVxa__stage:is([data-cue="fade"], [data-cue="hold"]) :is(.contribution-module__TWKVxa__header, .contribution-module__TWKVxa__home, .contribution-module__TWKVxa__divider), .contribution-module__TWKVxa__stage:is([data-cue="fade"], [data-cue="hold"]) .contribution-module__TWKVxa__project:not([data-active="true"]) {
+  opacity: 0;
+}
+
+.contribution-module__TWKVxa__stage[data-cue="restore"] :is(.contribution-module__TWKVxa__light, .contribution-module__TWKVxa__header, .contribution-module__TWKVxa__home, .contribution-module__TWKVxa__divider, .contribution-module__TWKVxa__project) {
+  transition-duration: var(--restore-time);
+}
+
+@media (max-width: 800px) {
+  .contribution-module__TWKVxa__projects {
+    width: 84%;
+    left: 8%;
+  }
+
+  .contribution-module__TWKVxa__project {
+    grid-template-columns: 60% 35%;
+    gap: 5%;
+  }
+}
+
+@media (max-width: 540px) {
+  .contribution-module__TWKVxa__stage {
+    --project-row-height: calc(max(1200px, 100svh) * .62 / 3);
+    --project-metadata-gap: 9px;
+    min-height: 1200px;
+  }
+
+  .contribution-module__TWKVxa__header {
+    top: max(68.4px, 9svh);
+  }
+
+  .contribution-module__TWKVxa__projects {
+    top: 24%;
+  }
+
+  .contribution-module__TWKVxa__project {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contribution-module__TWKVxa__stage :is(.contribution-module__TWKVxa__light, .contribution-module__TWKVxa__beam, .contribution-module__TWKVxa__pool, .contribution-module__TWKVxa__project, .contribution-module__TWKVxa__header, .contribution-module__TWKVxa__home, .contribution-module__TWKVxa__divider) {
+    transition-duration: 0s;
+  }
+}
+
+.contribution-module__TWKVxa__stage[data-category="interior"] .contribution-module__TWKVxa__title {
+  color: var(--color-text-primary);
+}
+
+.contribution-module__TWKVxa__number {
+  margin-right: 1em;
+}
+
+.contribution-module__TWKVxa__stage[data-category="lighting"] {
+  height: auto;
+  min-height: 100svh;
+  padding-top: max(260px, 28svh);
+  padding-bottom: max(160px, 16svh);
+}
+
+.contribution-module__TWKVxa__stage[data-category="lighting"] .contribution-module__TWKVxa__projects {
+  height: auto;
+  margin-left: 12%;
+  position: relative;
+  top: auto;
+  left: 0;
+}
+
+.contribution-module__TWKVxa__stage[data-category="lighting"] .contribution-module__TWKVxa__project {
+  grid-template-columns: min(280px, 28%) minmax(0, 1fr);
+  align-items: center;
+}
+
+.contribution-module__TWKVxa__stage[data-category="lighting"] .contribution-module__TWKVxa__beam, .contribution-module__TWKVxa__stage[data-category="production"] .contribution-module__TWKVxa__beam {
+  transform: translateY(-50%) skewY(var(--project-angle)) scaleX(-1);
+  left: calc(100% + 24px);
+}
+
+.contribution-module__TWKVxa__stage[data-category="lighting"] .contribution-module__TWKVxa__title, .contribution-module__TWKVxa__stage[data-category="production"]:not([data-lit="true"]) .contribution-module__TWKVxa__title {
+  color: var(--color-text-primary);
+}
+
+.contribution-module__TWKVxa__thumbnail {
+  place-self: center;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 180px;
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .contribution-module__TWKVxa__stage[data-category="lighting"] .contribution-module__TWKVxa__projects {
+    margin-left: 8%;
+  }
+}
+
+/*# sourceMappingURL=app_ux-service_bmw-scadpro_contribution_module_css_1igg3k2._.single.css.map*/

@@ -1,0 +1,226 @@
+.stage {
+  /* Interior Design's three rows occupy 58% of a stage at least 900px tall. */
+  --project-row-height: calc(max(900px, 100svh) * 0.58 / 3);
+  --project-row-padding: 22px;
+  --project-date-gap: 12px;
+  --project-subtitle-gap: 3px;
+  --project-metadata-gap: 14px;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 900px;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: #aaa7a1;
+}
+
+.header {
+  position: absolute;
+  z-index: 1;
+  /* Match the UX header's viewport position even when three rows need a taller stage. */
+  top: max(69.6px, 12svh);
+  left: 8%;
+  right: 8%;
+  text-align: center;
+}
+
+.header h1 {
+  /* Category-only adjustment; preserve the global H1 scale. */
+  font-size: clamp(22px, calc(18px + 1.09375vw), 32px);
+  margin: 0;
+  letter-spacing: 0.065em;
+  color: #d5d3ce;
+}
+
+.header p {
+  margin: 25px 0 0;
+  color: #84827e;
+}
+
+.projects {
+  position: absolute;
+  z-index: 1;
+  top: 28%;
+  left: 12%;
+  width: 76%;
+  height: auto;
+  display: grid;
+  /* Equal rows keep the percentage dividers exactly on row boundaries. */
+  grid-template-rows: repeat(var(--project-count), minmax(var(--project-row-height), 1fr));
+}
+
+.project {
+  appearance: none;
+  display: grid;
+  grid-template-columns: 60% 33%;
+  gap: 7%;
+  align-items: last baseline;
+  align-content: center;
+  padding: var(--project-row-padding) 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #b4b1ab;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--cue-duration) var(--cue-ease), opacity var(--fade-time) var(--cue-ease);
+}
+
+.information { display: flex; flex-direction: column; align-items: flex-start; }
+.date { letter-spacing: 0.08em; opacity: 0.55; margin-bottom: var(--project-date-gap); }
+.title { letter-spacing: -0.025em; }
+.subtitle { margin-top: var(--project-subtitle-gap); opacity: 0.88; color: var(--category-accent); }
+.metadata { opacity: 0.55; margin-top: var(--project-metadata-gap); }
+.description {
+  font-synthesis: none;
+  letter-spacing: 0.04em;
+  opacity: 0.65;
+  text-align: right;
+  text-wrap: pretty;
+}
+
+.divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgb(255 255 255 / 0.12);
+  pointer-events: none;
+}
+
+.home {
+  position: absolute;
+  z-index: 1;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  --cue-blend: 0%;
+  transition: opacity var(--cue-duration) var(--cue-ease), --cue-blend var(--color-time) var(--cue-ease);
+}
+
+/* The skew pivots at the left-edge source. Angular and longitudinal falloff
+   feather the beam without a clipped silhouette or a visible light fixture. */
+.beam {
+  position: absolute;
+  left: 0;
+  top: 56%;
+  width: 96vw;
+  height: clamp(280px, 38vh, 460px);
+  transform-origin: 0 50%;
+  transform: translateY(-50%) skewY(var(--project-angle));
+  background: conic-gradient(from 0deg at 0% 50%,
+    transparent 74deg,
+    color-mix(in srgb, rgb(245 233 208 / 0.025), rgba(from var(--category-accent) r g b / 0.03125) var(--cue-blend)) 80deg,
+    color-mix(in srgb, rgb(245 233 208 / 0.10), rgba(from var(--category-accent) r g b / 0.125) var(--cue-blend)) 87deg,
+    color-mix(in srgb, rgb(250 240 220 / 0.20), rgba(from var(--category-accent) r g b / 0.25) var(--cue-blend)) 90deg,
+    color-mix(in srgb, rgb(245 233 208 / 0.10), rgba(from var(--category-accent) r g b / 0.125) var(--cue-blend)) 93deg,
+    color-mix(in srgb, rgb(245 233 208 / 0.025), rgba(from var(--category-accent) r g b / 0.03125) var(--cue-blend)) 100deg,
+    transparent 106deg);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 48%, rgb(0 0 0 / 0.6) 76%, transparent);
+  filter: blur(14px);
+  transition: transform var(--cue-duration) var(--cue-ease);
+}
+
+.pool {
+  position: absolute;
+  left: var(--project-x);
+  top: var(--project-y);
+  width: 92vw;
+  height: clamp(160px, 24vh, 260px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse,
+    color-mix(in srgb, rgb(250 236 207 / 0.12), rgba(from var(--category-accent) r g b / 0.15) var(--cue-blend)) 0%,
+    color-mix(in srgb, rgb(241 226 198 / 0.07), rgba(from var(--category-accent) r g b / 0.0875) var(--cue-blend)) 28%,
+    color-mix(in srgb, rgb(236 220 191 / 0.02), rgba(from var(--category-accent) r g b / 0.025) var(--cue-blend)) 51%, transparent 72%);
+  filter: blur(15px);
+  transition: left var(--cue-duration) var(--cue-ease), top var(--cue-duration) var(--cue-ease);
+}
+
+.stage[data-lit="true"] .light { opacity: 1; }
+.stage[data-lit="true"] .project { color: #686560; }
+.stage[data-lit="true"] .project[data-active="true"] { color: #e5dfd3; }
+.project:focus-visible { outline: 1px solid #797368; outline-offset: 8px; }
+.header, .home, .divider { transition: opacity var(--fade-time) var(--cue-ease); }
+
+.stage:is([data-cue="color"], [data-cue="fade"], [data-cue="hold"]) .light { --cue-blend: 100%; }
+.stage:is([data-cue="color"], [data-cue="fade"], [data-cue="hold"]) .project[data-active="true"] { color: color-mix(in srgb, #fff 88%, var(--category-accent)); }
+.stage:is([data-cue="fade"], [data-cue="hold"]) :is(.header, .home, .divider),
+.stage:is([data-cue="fade"], [data-cue="hold"]) .project:not([data-active="true"]) { opacity: 0; }
+.stage[data-cue="restore"] :is(.light, .header, .home, .divider, .project) { transition-duration: var(--restore-time); }
+
+@media (max-width: 800px) {
+  .projects { left: 8%; width: 84%; }
+  .project { grid-template-columns: 60% 35%; gap: 5%; }
+}
+
+@media (max-width: 540px) {
+  .stage {
+    /* Preserve the Interior Design mobile rhythm: 62% / three rows. */
+    --project-row-height: calc(max(1200px, 100svh) * 0.62 / 3);
+    --project-metadata-gap: 9px;
+    min-height: 1200px;
+  }
+  .header { top: max(68.4px, 9svh); }
+  .projects { top: 24%; }
+  .project { grid-template-columns: 1fr; gap: 10px; align-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage :is(.light, .beam, .pool, .project, .header, .home, .divider) { transition-duration: 0ms; }
+}
+
+.stage[data-category="interior"] .title { color: var(--color-text-primary); }
+.number { margin-right: 1em; }
+
+/* Static video-project list: natural image ratios and the shared page gutters. */
+.stage[data-category="lighting"] {
+  height: auto;
+  min-height: 100svh;
+  padding-top: max(260px, 28svh);
+  padding-bottom: max(160px, 16svh);
+}
+.stage[data-category="lighting"] .projects {
+  position: relative;
+  top: auto;
+  left: 0;
+  margin-left: 12%;
+  height: auto;
+}
+.stage[data-category="lighting"] .project {
+  grid-template-columns: min(280px, 28%) minmax(0, 1fr);
+  align-items: center;
+}
+.stage[data-category="lighting"] .beam,
+.stage[data-category="production"] .beam {
+  left: calc(100% + 24px);
+  transform: translateY(-50%) skewY(var(--project-angle)) scaleX(-1);
+}
+.stage[data-category="lighting"] .title { color: var(--color-text-primary); }
+.stage[data-category="production"]:not([data-lit="true"]) .title {
+  color: var(--color-text-primary);
+}
+.thumbnail {
+  display: block;
+  justify-self: center;
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 180px;
+}
+
+@media (max-width: 800px) {
+  .stage[data-category="lighting"] .projects { margin-left: 8%; }
+}
+

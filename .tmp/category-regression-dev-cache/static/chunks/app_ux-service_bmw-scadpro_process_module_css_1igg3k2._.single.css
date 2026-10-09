@@ -1,0 +1,86 @@
+/* [project]/app/ux-service/bmw-scadpro/process.module.css [app-client] (css) */
+.process-module__tCoffG__chapter {
+  padding: clamp(88px, 14svh, 160px) var(--detail-gutter) clamp(120px, 20svh, 220px);
+  background: #0b1017;
+}
+
+.process-module__tCoffG__label {
+  letter-spacing: .16em;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 clamp(48px, 8svh, 88px);
+  display: flex;
+}
+
+.process-module__tCoffG__label span:first-child {
+  color: var(--color-text-muted);
+}
+
+.process-module__tCoffG__roles {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px clamp(40px, 7vw, 112px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+}
+
+.process-module__tCoffG__role {
+  border-top: 1px solid #a09e9824;
+  padding: 38px 0 54px;
+}
+
+.process-module__tCoffG__role h3 {
+  color: var(--color-text-primary);
+  letter-spacing: -.025em;
+  transition: color .6s var(--cue-ease);
+  margin: 0;
+}
+
+.process-module__tCoffG__role p {
+  opacity: .65;
+  margin: 16px 0 0;
+}
+
+.process-module__tCoffG__additionalInvolvement {
+  color: var(--color-text-secondary);
+  opacity: .65;
+  margin-top: 24px;
+}
+
+.process-module__tCoffG__additionalInvolvement p {
+  margin: 0;
+}
+
+.process-module__tCoffG__additionalInvolvement p:first-child {
+  letter-spacing: .12em;
+}
+
+.process-module__tCoffG__additionalInvolvement p + p {
+  margin-top: 12px;
+}
+
+@media (hover: hover) {
+  .process-module__tCoffG__role:hover h3 {
+    color: var(--color-ux);
+  }
+}
+
+@media (max-width: 600px) {
+  .process-module__tCoffG__roles {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+
+  .process-module__tCoffG__role {
+    padding: 30px 0 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-module__tCoffG__role h3 {
+    transition: none;
+  }
+}
+
+/*# sourceMappingURL=app_ux-service_bmw-scadpro_process_module_css_1igg3k2._.single.css.map*/

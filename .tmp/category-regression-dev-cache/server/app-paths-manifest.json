@@ -1,0 +1,9 @@
+{
+  "/interior/page": "app/interior/page.js",
+  "/lighting-motion/page": "app/lighting-motion/page.js",
+  "/page": "app/page.js",
+  "/production/page": "app/production/page.js",
+  "/resume/page": "app/resume/page.js",
+  "/ux-service/bmw-scadpro/page": "app/ux-service/bmw-scadpro/page.js",
+  "/ux-service/page": "app/ux-service/page.js"
+}

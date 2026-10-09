@@ -1,0 +1,199 @@
+/* [project]/app/components/project-stage.module.css [app-client] (css) */
+.project-stage-module__sjbOua__resume {
+  max-width: 1600px;
+  color: var(--color-text-secondary);
+  margin-inline: auto;
+  padding: clamp(48px, 6vw, 88px) 12% clamp(64px, 7vw, 104px);
+}
+
+.project-stage-module__sjbOua__header {
+  border-bottom: 1px solid var(--color-divider);
+  margin-bottom: clamp(32px, 4vw, 56px);
+  padding-bottom: clamp(28px, 3vw, 44px);
+}
+
+.project-stage-module__sjbOua__eyebrow {
+  letter-spacing: .14em;
+  margin: 0 0 22px;
+}
+
+.project-stage-module__sjbOua__title {
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.project-stage-module__sjbOua__description {
+  margin: 16px 0 0;
+}
+
+.project-stage-module__sjbOua__sectionHeading {
+  color: var(--color-text-secondary);
+  letter-spacing: .16em;
+  margin: 0 0 clamp(28px, 3vw, 40px);
+}
+
+.project-stage-module__sjbOua__sectionHeading span {
+  color: var(--color-text-muted);
+  margin-right: 12px;
+}
+
+.project-stage-module__sjbOua__entry {
+  justify-content: space-between;
+  align-items: center;
+  gap: 6%;
+  display: flex;
+}
+
+.project-stage-module__sjbOua__copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-stage-module__sjbOua__discipline {
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+
+.project-stage-module__sjbOua__university {
+  color: var(--color-text-primary);
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: var(--type-display-weight);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.project-stage-module__sjbOua__degree {
+  margin: 18px 0 0;
+}
+
+.project-stage-module__sjbOua__minors {
+  margin: 4px 0 0;
+}
+
+.project-stage-module__sjbOua__metadata {
+  color: var(--color-text-secondary);
+  margin: 18px 0 0;
+}
+
+.project-stage-module__sjbOua__photograph {
+  flex: 0 0 32%;
+  min-width: 0;
+  margin: 0;
+}
+
+.project-stage-module__sjbOua__imageFrame {
+  aspect-ratio: 8 / 5;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-stage-module__sjbOua__image {
+  object-fit: cover;
+  filter: saturate(.85);
+  transition: filter .45s;
+}
+
+.project-stage-module__sjbOua__toronto .project-stage-module__sjbOua__image {
+  object-position: 50% 0%;
+}
+
+.project-stage-module__sjbOua__scad .project-stage-module__sjbOua__image {
+  object-position: 50% 40%;
+}
+
+.project-stage-module__sjbOua__caption {
+  color: var(--color-text-secondary);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.project-stage-module__sjbOua__caption a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-stage-module__sjbOua__caption a:hover {
+  text-underline-offset: 3px;
+  text-decoration: underline;
+}
+
+.project-stage-module__sjbOua__caption a:focus-visible {
+  outline-offset: 4px;
+  outline: 1px solid;
+}
+
+.project-stage-module__sjbOua__creditDetails {
+  margin-top: 4px;
+}
+
+.project-stage-module__sjbOua__creditDetails summary {
+  cursor: pointer;
+  width: fit-content;
+}
+
+.project-stage-module__sjbOua__creditDetails summary:focus-visible {
+  outline-offset: 4px;
+  outline: 1px solid;
+}
+
+.project-stage-module__sjbOua__creditDetails p {
+  margin: 6px 0 0;
+}
+
+.project-stage-module__sjbOua__scad {
+  border-top: 1px solid var(--color-divider);
+  margin-top: clamp(28px, 3vw, 44px);
+  padding-top: clamp(28px, 3vw, 44px);
+}
+
+.project-stage-module__sjbOua__scad .project-stage-module__sjbOua__photograph {
+  flex-basis: 29%;
+  align-self: flex-start;
+  margin-top: 12px;
+}
+
+.project-stage-module__sjbOua__scad .project-stage-module__sjbOua__imageFrame {
+  aspect-ratio: 2;
+}
+
+@media (hover: hover) {
+  .project-stage-module__sjbOua__photograph:hover .project-stage-module__sjbOua__image {
+    filter: saturate(.95);
+  }
+}
+
+@media (max-width: 800px) {
+  .project-stage-module__sjbOua__resume {
+    padding-inline: 8%;
+  }
+
+  .project-stage-module__sjbOua__entry, .project-stage-module__sjbOua__scad {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .project-stage-module__sjbOua__photograph, .project-stage-module__sjbOua__scad .project-stage-module__sjbOua__photograph {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 520px;
+    margin-top: 0;
+  }
+
+  .project-stage-module__sjbOua__scad {
+    margin-top: 36px;
+    padding-top: 36px;
+  }
+
+  .project-stage-module__sjbOua__university {
+    font-size: clamp(24px, 3.5vw, 28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-stage-module__sjbOua__image {
+    transition: none;
+  }
+}
+
+/*# sourceMappingURL=app_components_project-stage_module_15f1sou.css.map*/
