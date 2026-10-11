@@ -17,21 +17,25 @@ const projects = [
     number: "01", date: "2025", title: "SOS - Seventeen",
     subtitle: "Motion Design", disciplines: "AE Typography Motion Design",
     thumbnail: sos,
+    href: "/lighting-motion/kinetic-typography",
   },
   {
     number: "02", date: "2025", title: "命名 - 蒋敦豪", titleLanguage: "zh-Hans",
     subtitle: "Lighting Design", disciplines: "grandMA2 Lighting Console Programming",
     thumbnail: mingming,
+    href: "/lighting-motion/mingming",
   },
   {
     number: "03", date: "2024", title: "Intro - ONER",
     subtitle: "Lighting Design", disciplines: "ETC Lighting Console Programming",
     thumbnail: intro,
+    href: "/lighting-motion/intro",
   },
   {
     number: "04", date: "2024", title: "Shooting Star - XG",
     subtitle: "Lighting Design", disciplines: "ETC Lighting Console Programming",
     thumbnail: shootingstar,
+    href: "/lighting-motion/shooting-star",
   },
 ];
 

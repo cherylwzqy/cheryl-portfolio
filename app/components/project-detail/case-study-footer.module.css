@@ -13,6 +13,7 @@
 .back { justify-self: start; }
 .navigation .home { justify-self: center; --glow-color: var(--case-footer-home-accent); }
 .project { justify-self: end; }
+.disabledProject { display: inline-flex; align-items: center; min-height: var(--case-footer-nav-min-height); padding: 12px 0; cursor: default; }
 .light .project { --glow-color: var(--case-footer-home-accent); }
 .navigation .glow { position: absolute; top: 50%; left: 50%; width: clamp(150px, 15vw, 210px); aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; opacity: 0; transition: opacity var(--cue-duration, 800ms) var(--cue-ease); }
 .navigation .glow::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgba(from var(--glow-color) r g b / 0.378) 0%, rgba(from var(--glow-color) r g b / 0.1771875) 28%, rgba(from var(--glow-color) r g b / 0.04725) 50%, transparent 72%); filter: blur(16px); animation: breathe 3s ease-in-out 800ms infinite both; animation-play-state: paused; }

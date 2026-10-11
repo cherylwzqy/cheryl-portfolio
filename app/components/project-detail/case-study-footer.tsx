@@ -9,11 +9,12 @@ export interface CaseStudyFooterProps {
   homeHref?: string;
   previousProjectHref?: string;
   nextProjectHref?: string;
+  nextProjectDisabled?: boolean;
   projectNavigationLabel?: string;
   accentColor?: string;
 }
 
-export default function CaseStudyFooter({ theme = "dark", backHref, backLabel, homeHref = "/", previousProjectHref, nextProjectHref, projectNavigationLabel, accentColor }: CaseStudyFooterProps) {
+export default function CaseStudyFooter({ theme = "dark", backHref, backLabel, homeHref = "/", previousProjectHref, nextProjectHref, nextProjectDisabled = false, projectNavigationLabel, accentColor }: CaseStudyFooterProps) {
   const projectHref = previousProjectHref || nextProjectHref;
   const previous = Boolean(previousProjectHref);
   const customStyle = accentColor ? { "--case-footer-accent": accentColor, "--case-footer-hover": accentColor } as CSSProperties : undefined;
@@ -38,6 +39,11 @@ export default function CaseStudyFooter({ theme = "dark", backHref, backLabel, h
               {!previous && <> <span className={`${styles.arrow} ${styles.rightArrow}`} aria-hidden="true">→</span></>}
             </span>
           </Link>
+        )}
+        {!projectHref && nextProjectDisabled && (
+          <span className={`${styles.project} ${styles.disabledProject}`} role="link" aria-disabled="true">
+            <span className={styles.label}>NEXT PROJECT <span className={`${styles.arrow} ${styles.rightArrow}`} aria-hidden="true">→</span></span>
+          </span>
         )}
       </nav>
     </footer>
