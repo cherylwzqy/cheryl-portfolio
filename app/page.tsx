@@ -5,20 +5,18 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const categories = [
-  { name: "UX / Service Design", color: "var(--color-ux)" },
-  { name: "Interior Design", color: "var(--color-interior)" },
+  { name: "UX / Service Design", color: "var(--color-ux)", href: "/ux-service" },
   // Preserve the existing red until migration to --color-lighting is approved.
-  { name: "Lighting / Motion Design", color: "#D93A3A" },
-  { name: "Production Design", color: "var(--color-production)" },
+  { name: "Lighting / Motion Design", color: "#D93A3A", href: "/lighting-motion" },
+  { name: "Other Works", color: "var(--color-production)", href: "/others" },
 ];
 
 type ClickCue = { index: number; phase: "color" | "fade" | "hold" | "restore" };
 const cueTiming = { color: 450, fade: 700, hold: 550, restore: 800 };
 
-// Add the contact destination when its details are supplied.
 const secondaryLinks: { label: string; href?: string }[] = [
   { label: "RESUME", href: "/resume" },
-  { label: "CONTACT" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export default function Home() {
@@ -36,10 +34,7 @@ export default function Home() {
     if (cueLocked.current) return;
     cueLocked.current = true;
     setClickCue({ index, phase: "color" });
-    if (index === 0) router.prefetch("/ux-service");
-    if (index === 1) router.prefetch("/interior");
-    if (index === 2) router.prefetch("/lighting-motion");
-    if (index === 3) router.prefetch("/production");
+    router.prefetch(categories[index].href);
   };
 
   useEffect(() => {
@@ -50,19 +45,12 @@ export default function Home() {
     const duration = reducedMotion && clickCue.phase !== "hold" ? 0 : cueTiming[clickCue.phase];
     const timer = window.setTimeout(() => {
       const nextPhase = { color: "fade", fade: "hold", hold: "restore" } as const;
-      if (clickCue.phase === "hold" && clickCue.index === 0) {
-        router.push("/ux-service");
-      } else if (clickCue.phase === "hold" && clickCue.index === 1) {
-        router.push("/interior");
-      } else if (clickCue.phase === "hold" && clickCue.index === 2) {
-        router.push("/lighting-motion");
-      } else if (clickCue.phase === "hold" && clickCue.index === 3) {
-        router.push("/production");
+      if (clickCue.phase === "hold") {
+        router.push(categories[clickCue.index].href);
       } else if (clickCue.phase === "restore") {
         cueLocked.current = false;
         setClickCue(null);
       } else {
-        // Categories without a destination keep the temporary restore cue.
         setClickCue({ index: clickCue.index, phase: nextPhase[clickCue.phase] });
       }
     }, duration);
@@ -98,69 +86,71 @@ export default function Home() {
   } as CSSProperties;
 
   return (
-    <main
-      ref={stageRef}
-      className="stage"
-      aria-label="Multidisciplinary design portfolio"
-      data-lit={active !== null}
-      data-cue={clickCue?.phase ?? "idle"}
-      style={lightStyle}
-      onPointerLeave={() => setHovered(null)}
-    >
-      <div className="spotlight" aria-hidden="true">
-        <div className="spotlight-beam" />
-        <div className="spotlight-pool" />
-      </div>
-      <header className="identity">
-        <h1 className="identity-title type-h3">
-          <span className="identity-name">CHERYL W.</span>{" "}
-          <span className="identity-edition">Portfolio 2026</span>
-        </h1>
-        <p className="identity-statement type-small">I believe design creates experiences.</p>
-      </header>
-      <div className="disciplines" onPointerLeave={() => setHovered(null)}>
-        {categories.map((category, index) => (
-          <button
-            key={category.name}
-            ref={(element) => { itemsRef.current[index] = element; }}
-            type="button"
-            className="discipline"
-            data-active={active === index}
-            aria-pressed={active === index}
-            aria-disabled={clickCue !== null}
-            tabIndex={clickCue && clickCue.index !== index ? -1 : 0}
-            onClick={() => startCue(index)}
-            onPointerEnter={(event) => {
-              if (event.pointerType !== "touch") setHovered(index);
-            }}
-            onFocus={() => setFocused(index)}
-            onBlur={() => setFocused(null)}
-          >
-            <span className="discipline-number type-micro" aria-hidden="true">0{index + 1}</span>
-            <span className="discipline-name type-subtitle type-navigation">{category.name}</span>
-          </button>
-        ))}
-      </div>
-      <div className="secondary-links" inert={clickCue !== null}>
-        {secondaryLinks.map(({ label, href }) => href ? (
-          <Link key={label} className="secondary-link type-micro" href={href} tabIndex={0}>
-            <span className="secondary-light" aria-hidden="true" />
-            <span className="secondary-label">{label}</span>
-          </Link>
-        ) : (
-          <a
-            key={label}
-            className="secondary-link type-micro"
-            href={href}
-            role={href ? undefined : "link"}
-            aria-disabled={href ? undefined : true}
-            tabIndex={0}
-          >
-            <span className="secondary-light" aria-hidden="true" />
-            <span className="secondary-label">{label}</span>
-          </a>
-        ))}
-      </div>
+    <main aria-label="Multidisciplinary design portfolio">
+      <section
+        ref={stageRef}
+        className="stage"
+        aria-label="Design disciplines"
+        data-lit={active !== null}
+        data-cue={clickCue?.phase ?? "idle"}
+        style={lightStyle}
+        onPointerLeave={() => setHovered(null)}
+      >
+        <div className="spotlight" aria-hidden="true">
+          <div className="spotlight-beam" />
+          <div className="spotlight-pool" />
+        </div>
+        <header className="identity">
+          <h1 className="identity-title type-h3">
+            <span className="identity-name">CHERYL W.</span>{" "}
+            <span className="identity-edition">Portfolio 2026</span>
+          </h1>
+          <p className="identity-statement type-small">I believe design creates experiences.</p>
+        </header>
+        <div className="disciplines" onPointerLeave={() => setHovered(null)}>
+          {categories.map((category, index) => (
+            <button
+              key={category.name}
+              ref={(element) => { itemsRef.current[index] = element; }}
+              type="button"
+              className="discipline"
+              data-active={active === index}
+              aria-pressed={active === index}
+              aria-disabled={clickCue !== null}
+              tabIndex={clickCue && clickCue.index !== index ? -1 : 0}
+              onClick={() => startCue(index)}
+              onPointerEnter={(event) => {
+                if (event.pointerType !== "touch") setHovered(index);
+              }}
+              onFocus={() => setFocused(index)}
+              onBlur={() => setFocused(null)}
+            >
+              <span className="discipline-number type-micro" aria-hidden="true">0{index + 1}</span>
+              <span className="discipline-name type-subtitle type-navigation">{category.name}</span>
+            </button>
+          ))}
+        </div>
+        <div className="secondary-links" inert={clickCue !== null}>
+          {secondaryLinks.map(({ label, href }) => href ? (
+            <Link key={label} className="secondary-link type-micro" href={href} tabIndex={0}>
+              <span className="secondary-light" aria-hidden="true" />
+              <span className="secondary-label">{label}</span>
+            </Link>
+          ) : (
+            <a
+              key={label}
+              className="secondary-link type-micro"
+              href={href}
+              role={href ? undefined : "link"}
+              aria-disabled={href ? undefined : true}
+              tabIndex={0}
+            >
+              <span className="secondary-light" aria-hidden="true" />
+              <span className="secondary-label">{label}</span>
+            </a>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

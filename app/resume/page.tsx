@@ -1,96 +1,118 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import Reveal from "../components/project-detail/reveal";
+import Connections from "./connections";
+import { experience, projects, skills } from "./resume-data";
 import styles from "./education.module.css";
 
 export const metadata: Metadata = {
   title: "Resume | Cheryl W.",
-  description: "Education in user experience design and interior design.",
+  description: "Cheryl Wang — cross-disciplinary designer working across UX, service design, and creative production.",
 };
-
-// Keep temporary photographs and their attribution together for easy replacement.
-const campuses = {
-  toronto: {
-    src: "/images/education/university-college.jpg",
-    alt: "Sunlit stone arches and tower of University College at the University of Toronto",
-    name: "University College",
-    photographer: "Nuthingoldstays",
-    source: "https://commons.wikimedia.org/wiki/File:University_College_Front_Facade.jpg",
-    license: "CC BY-SA 3.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
-    changes: "Cropped and saturation adjusted for display.",
-  },
-  scad: {
-    src: "/images/education/scad-bull-street-display.webp",
-    alt: "Historic SCAD brick architecture along Bull Street in Savannah, in natural light",
-    name: "SCAD on Bull Street",
-    photographer: "Ken Lund",
-    source: "https://commons.wikimedia.org/wiki/File:Bull_Street_in_Savannah,_Georgia_at_the_Savannah_College_of_Art_and_Design.jpg",
-    license: "CC BY-SA 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
-    changes: "Resized, converted to WebP, cropped and saturation adjusted for display.",
-  },
-};
-
-function CampusPhoto({ campus }: {
-  campus: typeof campuses.toronto;
-}) {
-  return (
-    <figure className={styles.photograph}>
-      <div className={styles.imageFrame}>
-        <Image src={campus.src} alt={campus.alt} fill loading="eager"
-          sizes="(max-width: 800px) 84vw, (min-width: 1600px) 390px, 25vw"
-          className={styles.image} />
-      </div>
-      <figcaption className={`${styles.caption} type-micro`}>
-        <a href={campus.source}>{campus.name} · Photo: {campus.photographer}</a>
-        <details className={styles.creditDetails}>
-          <summary>Source &amp; license</summary>
-          <p><a href={campus.source}>Original photograph / Wikimedia Commons</a>
-            {" · "}<a href={campus.licenseUrl}>{campus.license}</a>.
-            {" "}{campus.changes} Display adaptations under the same license.</p>
-        </details>
-      </figcaption>
-    </figure>
-  );
-}
 
 export default function ResumePage() {
   return (
-    <main className={styles.resume} aria-label="Resume">
-      <header className={styles.header}>
-        <p className={`${styles.eyebrow} type-micro`}>CHERYL WANG / PROFESSIONAL PROFILE</p>
-        <h1 className={`${styles.title} type-display`}>Resume.</h1>
-        <p className={`${styles.description} type-small`}>Designing across disciplines, spaces, and experiences.</p>
-      </header>
-      <section aria-labelledby="education-heading">
-        <h2 id="education-heading" className={`${styles.sectionHeading} type-micro`}>
-          <span>01 /</span> EDUCATION
-        </h2>
-        <Reveal distance={0}>
-          <article className={`${styles.entry} ${styles.toronto}`} aria-labelledby="toronto-heading">
-            <div className={styles.copy}>
-              <p className={`${styles.discipline} type-subtitle`}>User Experience Design</p>
-              <h3 id="toronto-heading" className={styles.university}>University of Toronto</h3>
-              <p className={`${styles.degree} type-body`}>Master of Information</p>
-              <p className={`${styles.metadata} type-small`}>Toronto, Canada · In Progress</p>
+    <main className={styles.resume}>
+      <section className={styles.profile} aria-labelledby="profile-name">
+        <header className={`${styles.masthead} type-micro`}>
+          <span>CHERYL W. / PORTFOLIO 2026</span><span>PROFILE / 01</span>
+        </header>
+        <div className={styles.introduction}>
+          <div className={styles.topRow}>
+            <div className={styles.identityGroup}>
+              <h1 id="profile-name" className={styles.name}>CHERYL WANG</h1>
+              <p className={`${styles.identity} type-subtitle`}>MULTIDISCIPLINARY DESIGNER</p>
             </div>
-            <CampusPhoto campus={campuses.toronto} />
-          </article>
-        </Reveal>
-        <Reveal distance={0}>
-          <article className={`${styles.entry} ${styles.scad}`} aria-labelledby="scad-heading">
-            <div className={styles.copy}>
-              <p className={`${styles.discipline} type-subtitle`}>Interior Design</p>
-              <h3 id="scad-heading" className={styles.university}>Savannah College of Art and Design</h3>
-              <p className={`${styles.degree} type-body`}>Bachelor of Fine Arts</p>
-              <p className={`${styles.minors} type-small`}>Minors: Architectural History and Production Design</p>
-              <p className={`${styles.metadata} type-small`}>Savannah, USA</p>
+            <nav className={styles.downloadArea} aria-label="Download PDF resume">
+              <span className={`${styles.downloadLabel} type-micro`}>RESUME / PDF</span>
+              <div className={styles.downloadButtons}>
+                <a href="/Resume/Resume_EN.pdf" download="Resume_EN.pdf" className={`${styles.downloadButton} type-small`}>English <span aria-hidden="true">↓</span></a>
+                <a href="/Resume/Resume_CN.pdf" download="Resume_CN.pdf" lang="zh-Hans" className={`${styles.downloadButton} type-small`}>简体中文 <span aria-hidden="true">↓</span></a>
+              </div>
+            </nav>
+          </div>
+          <div className={styles.lowerRow}>
+            <section className={styles.about} aria-labelledby="about-heading">
+              <h2 id="about-heading" className={`${styles.label} type-micro`}>ABOUT</h2>
+              <p className="type-body">Cross-disciplinary designer with a background in UX / Service Design, spatial design, and creative production. I connect research, visual communication, and human-centered thinking to create meaningful experiences across digital and physical spaces.</p>
+            </section>
+            <Connections />
+          </div>
+        </div>
+        <div className={styles.information}>
+          <section className={styles.education} aria-labelledby="education-heading">
+            <h2 id="education-heading" className={`${styles.sectionHeading} type-micro`}><span>01 /</span> EDUCATION</h2>
+            <article>
+              <h3>University of Toronto</h3>
+              <p>Master of Information (MI)</p><p>User Experience Design</p>
+              <p className={styles.date}>Expected June 2027</p>
+            </article>
+            <article>
+              <h3>Savannah College of Art and Design (SCAD)</h3>
+              <p>Bachelor of Fine Arts (BFA)</p><p>Interior Design</p>
+              <p className={styles.minors}>Minors: Production Design / Architectural History</p>
+              <p className={styles.date}>2024</p>
+            </article>
+          </section>
+          <section aria-labelledby="skills-heading">
+            <h2 id="skills-heading" className={`${styles.sectionHeading} type-micro`}><span>02 /</span> SKILLS</h2>
+            <div className={styles.skills}>
+              {skills.map((group) => (
+                <div key={group.title} className={styles.skillGroup}>
+                  <h3 className="type-micro">{group.title}</h3>
+                </div>
+              ))}
             </div>
-            <CampusPhoto campus={campuses.scad} />
-          </article>
-        </Reveal>
+          </section>
+        </div>
       </section>
+      <div id="experience" className={styles.experience}>
+        <Reveal distance={0}>
+          <section className={styles.editorialSection} aria-labelledby="projects-heading">
+            <h2 id="projects-heading" className={`${styles.sectionHeading} type-micro`}><span>03 /</span> SELECTED PROJECTS</h2>
+            {projects.map((project) => (
+              <article key={project.title} className={styles.entry}>
+                <header className={styles.entryHeader}>
+                  <div>
+                    <h3 className="type-h3">{project.title}</h3>
+                    <p className={`${styles.organization} type-body`}>{project.organization}</p>
+                    <p className={`${styles.entryType} type-small`}>{project.type}</p>
+                  </div>
+                  <p className={`${styles.date} type-small`}>{project.date}</p>
+                </header>
+                <ul className={`${styles.responsibilities} type-body`}>{project.responsibilities.map((text) => <li key={text}>{text}</li>)}</ul>
+                {project.note && <p className={`${styles.note} type-small`}>{project.note}</p>}
+                <Link href={project.href} className={`${styles.projectLink} type-small`}>View Project <span aria-hidden="true">↗</span></Link>
+              </article>
+            ))}
+          </section>
+        </Reveal>
+        <Reveal distance={0}>
+          <section className={styles.editorialSection} aria-labelledby="work-heading">
+            <h2 id="work-heading" className={`${styles.sectionHeading} type-micro`}><span>04 /</span> PROFESSIONAL EXPERIENCE</h2>
+            {experience.map((job) => (
+              <article key={job.title} className={styles.entry}>
+                <header className={styles.entryHeader}>
+                  <div><h3 className="type-h3">{job.title}</h3><p className={`${styles.organization} type-body`}>{job.organization}</p></div>
+                  <p className={`${styles.date} type-small`}>{job.date}</p>
+                </header>
+                <ul className={`${styles.responsibilities} type-body`}>{job.responsibilities.map((text) => <li key={text}>{text}</li>)}</ul>
+              </article>
+            ))}
+          </section>
+        </Reveal>
+        <section className={styles.editorialSection} aria-labelledby="awards-heading">
+          <h2 id="awards-heading" className={`${styles.sectionHeading} type-micro`}><span>05 /</span> AWARDS &amp; RECOGNITION</h2>
+          <div className={styles.awards}>
+            <div><h3 className="type-subtitle">International Design Awards (IDA)</h3><p className="type-body">Honorable Mention</p></div>
+            <div><h3 className="type-subtitle">Academic Merit Scholarships</h3><p className="type-body">High School and University</p></div>
+          </div>
+        </section>
+      </div>
+      <footer className={`${styles.footer} type-micro`}>
+        <span>CHERYL W. © 2026</span>
+        <Link href="/" className="secondary-link type-micro"><span className="secondary-light" aria-hidden="true" /><span className="secondary-label">Back to Home</span></Link>
+      </footer>
     </main>
   );
 }

@@ -117,12 +117,12 @@
   font-weight: 400;
 }
 
-/* Keep the existing four-column navigation compact on narrower screens. */
+/* Keep the three main categories legible at every viewport width. */
 @media (min-width: 701px) and (max-width: 1200px) {
-  .type-navigation { font-size: clamp(11px, 1.22vw, 20px); }
+  .type-navigation { font-size: clamp(14px, 1.55vw, 20px); }
 }
 @media (max-width: 700px) {
-  .type-navigation { font-size: clamp(10px, 2.5vw, 16px); }
+  .type-navigation { font-size: var(--type-subtitle-size); }
 }
 
 
@@ -149,7 +149,7 @@ body { margin: 0; }
 .stage {
   position: relative;
   isolation: isolate;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   height: 100svh;
   min-height: 320px;
@@ -212,7 +212,7 @@ body { margin: 0; }
   left: 7%;
   width: 86%;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   transform: translateY(-50%);
 }
 
@@ -251,8 +251,8 @@ body { margin: 0; }
 .discipline:focus-visible { outline: 1px solid #797368; outline-offset: -20px; }
 
 @media (max-width: 700px) {
-  .disciplines { left: 5%; width: 90%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .discipline { padding: 28px 8px; justify-content: flex-start; }
+  .disciplines { left: 5%; width: 90%; grid-template-columns: minmax(0, 1fr); row-gap: 20px; }
+  .discipline { padding: 28px 8px; }
   .spotlight-beam { width: 300px; }
 }
 

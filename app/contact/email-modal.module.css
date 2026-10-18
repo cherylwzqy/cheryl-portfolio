@@ -1,0 +1,62 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: min(460px, calc(100% - 40px));
+  max-height: calc(100svh - 40px);
+  overflow-y: auto;
+  margin: auto;
+  padding: 48px 36px 36px;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 10px;
+  background: linear-gradient(150deg, #222, #151515 70%);
+  color: var(--color-text-primary);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.45);
+  text-align: center;
+}
+.dialog[open] { animation: appear 240ms ease-out both; }
+.dialog::backdrop { background: rgb(0 0 0 / 0.62); backdrop-filter: blur(3px); animation: backdrop-in 240ms ease-out both; }
+.dialog[data-closing="true"] { animation: disappear 240ms ease-in both; }
+.dialog[data-closing="true"]::backdrop { animation: backdrop-out 240ms ease-in both; }
+.dialog h2 { margin: 0; font-weight: 400; }
+.description { margin: 18px 0 0; color: var(--color-text-secondary); }
+.email { margin: 28px 0; user-select: text; overflow-wrap: anywhere; }
+.close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: 26px;
+  cursor: pointer;
+}
+.copy {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid #d5d3ce;
+  border-radius: 4px;
+  background: #e6e4df;
+  color: #151515;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+.copy:hover { background: #f5f3ee; }
+.copy:disabled { cursor: wait; }
+.feedback { min-height: 42px; padding-top: 10px; color: var(--color-text-secondary); }
+.emailApp { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--color-text-secondary); text-decoration: none; }
+.emailApp:hover, .close:hover { color: var(--color-text-primary); }
+.dialog :is(button, a):focus-visible { outline: 1px solid var(--color-text-primary); outline-offset: 4px; }
+@keyframes appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes disappear { from { opacity: 1; } to { opacity: 0; transform: translateY(4px); } }
+@keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+@media (max-width: 420px) { .dialog { padding: 48px 24px 28px; } }
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open], .dialog[data-closing="true"], .dialog::backdrop, .dialog[data-closing="true"]::backdrop { animation: none; }
+  .copy { transition: none; }
+}
