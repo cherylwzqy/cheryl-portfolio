@@ -1,3 +1,4 @@
+import { publicAsset } from "../lib/public-asset";
 import CaseStudyFooter from "../components/project-detail/case-study-footer";
 import type { CSSProperties } from "react";
 import styles from "./motion-project-detail.module.css";
@@ -35,8 +36,8 @@ export default function MotionProjectDetail({
         </header>
         <div className={styles.showcase}>
           <video className={styles.video} controls playsInline preload="metadata" aria-label={`${title} project video`}>
-            <source src={videoSrc} type="video/mp4" />
-            Your browser does not support embedded video. <a href={videoSrc}>Watch {title}</a>.
+            <source src={publicAsset(videoSrc)} type="video/mp4" />
+            Your browser does not support embedded video. <a href={publicAsset(videoSrc)}>Watch {title}</a>.
           </video>
         </div>
         <p className={`${styles.description} type-body`}>{description}</p>

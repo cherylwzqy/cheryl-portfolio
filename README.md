@@ -29,6 +29,34 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## GitHub Pages deployment
+
+`.github/workflows/deploy-pages.yml` builds and deploys this repository on pushes
+to `main` or manual dispatch. It targets `cherylwzqy/cheryl-portfolio` only and
+does not write to the `cherylwzqy.github.io` repository.
+
+In this repository's **Settings → Pages → Build and deployment**, select
+**GitHub Actions**. Leave the custom domain empty. Enable Actions and ensure the
+`github-pages` environment permits deployments from `main`. The intended URL is
+https://cherylwzqy.github.io/cheryl-portfolio/.
+
+Build the static export locally in PowerShell:
+
+```powershell
+$env:GITHUB_PAGES = 'true'
+npm run build
+Remove-Item Env:GITHUB_PAGES
+```
+
+Serve `out/` mounted at `/cheryl-portfolio/` for previewing. `next start` does not
+serve static exports. Pages serves original images without runtime optimization;
+public media files are copied unchanged. Use `publicAsset()` from
+`app/lib/public-asset.ts` for public asset URLs. Keep route URLs in `Link` and
+router calls unprefixed; Next.js handles their base path.
+
+The normal `npm run build` preserves Vercel's root URLs, standard Next.js output,
+and image optimization. Do not set `GITHUB_PAGES` on Vercel.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

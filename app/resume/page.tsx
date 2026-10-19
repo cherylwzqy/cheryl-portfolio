@@ -1,3 +1,4 @@
+import { publicAsset } from "../lib/public-asset";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "../components/project-detail/reveal";
@@ -26,8 +27,8 @@ export default function ResumePage() {
             <nav className={styles.downloadArea} aria-label="Download PDF resume">
               <span className={`${styles.downloadLabel} type-micro`}>RESUME / PDF</span>
               <div className={styles.downloadButtons}>
-                <a href="/Resume/Resume_EN.pdf" download="Resume_EN.pdf" className={`${styles.downloadButton} type-small`}>English <span aria-hidden="true">↓</span></a>
-                <a href="/Resume/Resume_CN.pdf" download="Resume_CN.pdf" lang="zh-Hans" className={`${styles.downloadButton} type-small`}>简体中文 <span aria-hidden="true">↓</span></a>
+                <a href={publicAsset("/Resume/Resume_EN.pdf")} download="Resume_EN.pdf" className={`${styles.downloadButton} type-small`}>English <span aria-hidden="true">↓</span></a>
+                <a href={publicAsset("/Resume/Resume_CN.pdf")} download="Resume_CN.pdf" lang="zh-Hans" className={`${styles.downloadButton} type-small`}>简体中文 <span aria-hidden="true">↓</span></a>
               </div>
             </nav>
           </div>

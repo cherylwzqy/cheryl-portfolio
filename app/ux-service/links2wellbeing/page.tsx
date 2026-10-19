@@ -1,3 +1,4 @@
+import { publicAsset } from "../../lib/public-asset";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -69,8 +70,8 @@ export default function Links2WellbeingPage() {
             <div className={styles.overviewIdentity}>
               <p id="overview-title" className={`${styles.sectionLabel} type-micro`}>01 / PROJECT OVERVIEW</p>
               <div className={styles.overviewLogos}>
-                <Image src="/images/L2W/OACAO_logo.jpg" alt="Older Adult Centres' Association of Ontario (OACAO) logo" width={1280} height={536} sizes="170px" />
-                <Image src="/images/L2W/L2W_logo.jpg" alt="Links2Wellbeing logo" width={1400} height={530} sizes="170px" />
+                <Image src={publicAsset("/images/L2W/OACAO_logo.jpg")} alt="Older Adult Centres' Association of Ontario (OACAO) logo" width={1280} height={536} sizes="170px" />
+                <Image src={publicAsset("/images/L2W/L2W_logo.jpg")} alt="Links2Wellbeing logo" width={1400} height={530} sizes="170px" />
               </div>
             </div>
             <div className={`${styles.overviewCopy} type-body`}>
@@ -120,21 +121,21 @@ export default function Links2WellbeingPage() {
           <div className={styles.approachColumns}>
             <article className={styles.resourcesApproach}>
               <div className={styles.approachIllustration}>
-                <Image src="/images/L2W/approach01.png" alt="Illustration of centralizing resources" width={2860} height={2912} sizes="(max-width: 540px) 240px, (max-width: 900px) 35vw, 240px" />
+                <Image src={publicAsset("/images/L2W/approach01.png")} alt="Illustration of centralizing resources" width={2860} height={2912} sizes="(max-width: 540px) 240px, (max-width: 900px) 35vw, 240px" />
               </div>
               <h3 className="type-subtitle">Centralize Resources</h3>
               <p className="type-body">Bring scattered resources into one accessible place to simplify onboarding and everyday work.</p>
             </article>
             <article className={styles.sharingApproach}>
               <div className={styles.approachIllustration}>
-                <Image src="/images/L2W/approach02.png" alt="Illustration of sharing knowledge among Link Workers" width={1440} height={1456} sizes="(max-width: 540px) 240px, (max-width: 900px) 35vw, 240px" />
+                <Image src={publicAsset("/images/L2W/approach02.png")} alt="Illustration of sharing knowledge among Link Workers" width={1440} height={1456} sizes="(max-width: 540px) 240px, (max-width: 900px) 35vw, 240px" />
               </div>
               <h3 className="type-subtitle">Enable Knowledge Sharing</h3>
               <p className="type-body">Create opportunities for Link Workers to exchange experiences, share practical knowledge, and learn from one another.</p>
             </article>
             <article className={styles.sustainableApproach}>
               <div className={styles.approachIllustration}>
-                <Image src="/images/L2W/approach03.png" alt="Illustration of building a sustainable service foundation" width={1452} height={1456} sizes="(max-width: 540px) 240px, (max-width: 900px) 35vw, 240px" />
+                <Image src={publicAsset("/images/L2W/approach03.png")} alt="Illustration of building a sustainable service foundation" width={1452} height={1456} sizes="(max-width: 540px) 240px, (max-width: 900px) 35vw, 240px" />
               </div>
               <h3 className="type-subtitle">Build for Sustainability</h3>
               <p className="type-body">Establish a foundation for future development through clear service processes, shared responsibilities, and ongoing support.</p>
@@ -151,7 +152,7 @@ export default function Links2WellbeingPage() {
                 <div className={styles.screenContent}>
                   {/* Use the verified original asset directly for the prototype screen. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/L2W/knowledge%20hub.png" alt="Links2Wellbeing Knowledge Hub homepage" width={2559} height={1347} loading="eager" />
+                  <img src={publicAsset("/images/L2W/knowledge%20hub.png")} alt="Links2Wellbeing Knowledge Hub homepage" width={2559} height={1347} loading="eager" />
                   <div className={styles.screenAnnotations} aria-hidden="true">
                     <svg viewBox="0 0 2559 1347" fill="none" focusable="false">
                       <g className={styles.resourceAnnotation}><path d="M-90 337H68" /><circle cx="110" cy="337" r="42" /></g>
@@ -173,7 +174,7 @@ export default function Links2WellbeingPage() {
               <article className={styles.libraryFeature}>
                 <span className={`${styles.featureNumber} type-micro`}>01 /</span>
                 <div className={styles.featurePreview}>
-                  <Image src="/images/L2W/resources.png" alt="Resource Library interface preview" width={390} height={357} sizes="(max-width: 540px) 84vw, (max-width: 800px) 40vw, 25vw" />
+                  <Image src={publicAsset("/images/L2W/resources.png")} alt="Resource Library interface preview" width={390} height={357} sizes="(max-width: 540px) 84vw, (max-width: 800px) 40vw, 25vw" />
                 </div>
                 <div>
                   <h3 className="type-subtitle">Resource Library</h3>
@@ -183,7 +184,7 @@ export default function Links2WellbeingPage() {
               <article className={styles.communityFeature}>
                 <span className={`${styles.featureNumber} type-micro`}>02 /</span>
                 <div className={styles.featurePreview}>
-                  <Image src="/images/L2W/connect.png" alt="Knowledge Sharing community interface preview" width={393} height={318} sizes="(max-width: 540px) 84vw, (max-width: 800px) 40vw, 25vw" />
+                  <Image src={publicAsset("/images/L2W/connect.png")} alt="Knowledge Sharing community interface preview" width={393} height={318} sizes="(max-width: 540px) 84vw, (max-width: 800px) 40vw, 25vw" />
                 </div>
                 <div>
                   <h3 className="type-subtitle">Knowledge Sharing</h3>
@@ -193,7 +194,7 @@ export default function Links2WellbeingPage() {
               <article className={styles.learningFeature}>
                 <span className={`${styles.featureNumber} type-micro`}>03 /</span>
                 <div className={styles.featurePreview}>
-                  <Image src="/images/L2W/tutorial.png" alt="Onboarding and Learning tutorial interface preview" width={548} height={540} sizes="(max-width: 540px) 84vw, (max-width: 800px) 40vw, 25vw" />
+                  <Image src={publicAsset("/images/L2W/tutorial.png")} alt="Onboarding and Learning tutorial interface preview" width={548} height={540} sizes="(max-width: 540px) 84vw, (max-width: 800px) 40vw, 25vw" />
                 </div>
                 <div>
                   <h3 className="type-subtitle">Onboarding &amp; Learning</h3>
