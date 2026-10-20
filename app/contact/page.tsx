@@ -1,5 +1,5 @@
+import TopNavigation from "../components/top-navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
 import ContactLinks from "./contact-links";
 import styles from "./contact.module.css";
 
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className={styles.page}>
+      <TopNavigation label="BACK TO HOME" />
       <div className={styles.content}>
         <div className={styles.spotlight} aria-hidden="true" />
         <header className={styles.introduction}>
@@ -22,10 +23,6 @@ export default function ContactPage() {
       </div>
       <footer className={`${styles.footer} type-micro`}>
         <span>CHERYL W. © 2026</span>
-        <Link href="/" className="secondary-link type-micro">
-          <span className="secondary-light" aria-hidden="true" />
-          <span className="secondary-label">Back to Home</span>
-        </Link>
       </footer>
     </main>
   );

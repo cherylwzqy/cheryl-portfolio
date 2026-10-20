@@ -1,0 +1,5 @@
+2026/10/19-20:24:18.244 4a40 Creating DB C:\Users\AW\cheryl-portfolio\.tmp\navigation-browser\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/10/19-20:24:18.250 4a40 Reusing MANIFEST C:\Users\AW\cheryl-portfolio\.tmp\navigation-browser\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/10/19-20:24:18.474 2f00 Level-0 table #5: started
+2026/10/19-20:24:18.488 2f00 Level-0 table #5: 683273 bytes OK
+2026/10/19-20:24:18.492 2f00 Delete type=0 #3

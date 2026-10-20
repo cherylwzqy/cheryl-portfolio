@@ -1,4 +1,5 @@
 .resume {
+  position: relative;
   --resume-block-gap: clamp(32px, 4vw, 48px);
   --resume-section-gap: clamp(56px, 7vw, 96px);
   --resume-column-gap: clamp(40px, 7vw, 112px);
@@ -6,8 +7,23 @@
   --resume-name-size: clamp(36px, 4.5vw, 68px);
   max-width: 1600px; margin-inline: auto; padding: 0 8%; background: var(--color-bg); color: var(--color-text-secondary);
 }
-.profile { display: flex; flex-direction: column; padding-top: clamp(24px, 3svh, 40px); }
-.masthead { display: flex; justify-content: space-between; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--color-divider); letter-spacing: 0.12em; }
+.profile { display: flex; flex-direction: column; padding-top: clamp(24px, 5svh, 56px); }
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-divider);
+  gap: 20px;
+  color: #aaa8a2;
+  letter-spacing: 0.16em;
+}
+.masthead > span { min-width: 0; }
+.masthead nav { flex-shrink: 0; }
+.masthead .homeLink { min-width: 0; padding-right: 0; white-space: nowrap; }
+.masthead .homeLink:hover { color: #e5e3dd; }
+.masthead .homeLink:focus-visible { outline: 1px solid var(--color-text-muted); outline-offset: 4px; }
 .introduction { display: grid; row-gap: var(--resume-block-gap); padding: var(--resume-intro-padding) 0 48px; }
 .topRow, .lowerRow { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); column-gap: 6%; }
 .topRow { align-items: start; }
@@ -116,8 +132,14 @@
 @media (min-width: 701px) and (max-width: 1100px) {
   .information { --education-track-gap: var(--resume-column-gap); }
 }
+@media (max-width: 800px) {
+  .masthead :global(.secondary-light) { max-width: calc(100% + 8vw); }
+}
+@media (max-width: 540px) {
+  .masthead { gap: 12px; }
+  .masthead .homeLink { padding-left: 0; }
+}
 @media (max-width: 700px) {
-  .masthead { letter-spacing: 0.08em; gap: 16px; flex-wrap: wrap; }
   .topRow, .lowerRow, .information { grid-template-columns: minmax(0, 1fr); gap: var(--resume-block-gap); }
   .introduction { padding-top: 36px; }
   .downloadArea { justify-self: start; align-items: flex-start; }

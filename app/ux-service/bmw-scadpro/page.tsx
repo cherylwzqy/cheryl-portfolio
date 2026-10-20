@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function BMWScadproPage() {
   return (
-    <ProjectDetail categoryHref="/ux-service" categoryLabel="UX / SERVICE DESIGN">
+    <ProjectDetail categoryHref="/ux-service" categoryLabel="← BACK TO UX / SERVICE">
       <ProjectHero
         eyebrow="01 / SERVICE DESIGN"
         title="BMW × SCADpro"

@@ -1,3 +1,4 @@
+import TopNavigation from "../components/top-navigation";
 import { publicAsset } from "../lib/public-asset";
 import CaseStudyFooter from "../components/project-detail/case-study-footer";
 import type { CSSProperties } from "react";
@@ -23,6 +24,7 @@ export default function MotionProjectDetail({
 }: MotionProjectDetailProps) {
   return (
     <main className={styles.detail} style={{ "--motion-accent": accentColor } as CSSProperties}>
+      <TopNavigation parentHref="/lighting-motion" label="← BACK TO LIGHTING / MOTION" />
       <div className={styles.content}>
         <header className={styles.header}>
           <div className={styles.heading}>

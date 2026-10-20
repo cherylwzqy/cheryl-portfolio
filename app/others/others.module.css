@@ -2,7 +2,7 @@
   position: relative;
   isolation: isolate;
   min-height: 100svh;
-  padding: max(69.6px, 12svh) 12% 64px;
+  padding: max(112px, 12svh) 12% 64px;
   background: #0A0A0A;
 }
 
@@ -125,5 +125,5 @@
   .gallery { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 540px) {
-  .page { padding-top: max(68.4px, 9svh); }
+  .page { padding-top: max(112px, 9svh); }
 }

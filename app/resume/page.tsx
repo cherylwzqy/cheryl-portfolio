@@ -16,7 +16,13 @@ export default function ResumePage() {
     <main className={styles.resume}>
       <section className={styles.profile} aria-labelledby="profile-name">
         <header className={`${styles.masthead} type-micro`}>
-          <span>CHERYL W. / PORTFOLIO 2026</span><span>PROFILE / 01</span>
+          <span>CHERYL W. / PORTFOLIO 2026</span>
+          <nav aria-label="Portfolio">
+            <Link href="/" className={`${styles.homeLink} secondary-link type-micro`}>
+              <span className="secondary-light" aria-hidden="true" />
+              <span className="secondary-label">BACK TO HOME</span>
+            </Link>
+          </nav>
         </header>
         <div className={styles.introduction}>
           <div className={styles.topRow}>
@@ -52,7 +58,7 @@ export default function ResumePage() {
               <h3>Savannah College of Art and Design (SCAD)</h3>
               <p>Bachelor of Fine Arts (BFA)</p><p>Interior Design</p>
               <p className={styles.minors}>Minors: Production Design / Architectural History</p>
-              <p className={styles.date}>2024</p>
+              <p className={styles.date}>Graduated in 2025</p>
             </article>
           </section>
           <section aria-labelledby="skills-heading">
@@ -112,7 +118,6 @@ export default function ResumePage() {
       </div>
       <footer className={`${styles.footer} type-micro`}>
         <span>CHERYL W. © 2026</span>
-        <Link href="/" className="secondary-link type-micro"><span className="secondary-light" aria-hidden="true" /><span className="secondary-label">Back to Home</span></Link>
       </footer>
     </main>
   );

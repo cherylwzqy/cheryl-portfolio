@@ -1,11 +1,12 @@
 .detail {
+  position: relative;
   --detail-gutter: 12%;
   overflow: clip;
   background: var(--color-bg);
   color: var(--color-text-secondary);
 }
 
-.content { padding: clamp(88px, 12vw, 160px) var(--detail-gutter) clamp(48px, 7vw, 96px); }
+.content { padding: max(112px, clamp(88px, 12vw, 160px)) var(--detail-gutter) clamp(48px, 7vw, 96px); }
 .header { margin-bottom: clamp(40px, 5vw, 72px); }
 .eyebrow { margin: 0 0 28px; color: var(--motion-accent, var(--color-lighting)); letter-spacing: 0.16em; }
 .title { margin: 0; color: var(--color-text-primary); letter-spacing: -0.025em; text-wrap: balance; }
@@ -32,7 +33,7 @@
   .detail { --detail-gutter: 8%; }
 }
 @media (max-width: 540px) {
-  .content { padding-top: 72px; }
+  .content { padding-top: 112px; }
   .eyebrow { margin-bottom: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TopNavigation from "../top-navigation";
 import type { ReactNode } from "react";
 import Reveal from "./reveal";
 import styles from "./project-detail.module.css";
@@ -10,16 +10,7 @@ export function ProjectDetail({ children, categoryHref, categoryLabel }: {
 }) {
   return (
     <main className={styles.detail}>
-      <nav className={styles.navigation} aria-label="Portfolio">
-        <Link href={categoryHref} className="secondary-link type-micro">
-          <span className="secondary-light" aria-hidden="true" />
-          <span className="secondary-label">{categoryLabel}</span>
-        </Link>
-        <Link href="/" className="secondary-link type-micro">
-          <span className="secondary-light" aria-hidden="true" />
-          <span className="secondary-label">HOME</span>
-        </Link>
-      </nav>
+      <TopNavigation parentHref={categoryHref} label={categoryLabel} />
       {children}
     </main>
   );

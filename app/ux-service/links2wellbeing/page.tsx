@@ -1,6 +1,6 @@
+import TopNavigation from "../../components/top-navigation";
 import { publicAsset } from "../../lib/public-asset";
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import Reveal from "../../components/project-detail/reveal";
 import styles from "./links2wellbeing.module.css";
@@ -26,6 +26,7 @@ const projectDetails = [
 export default function Links2WellbeingPage() {
   return (
     <main className={styles.page}>
+      <TopNavigation parentHref="/ux-service" label="← BACK TO UX / SERVICE" light />
       <div className={styles.backgroundArcs} aria-hidden="true">
         <svg className={styles.upperArc} viewBox="0 0 560 600" fill="none" focusable="false"><path d="M400 20A280 280 0 0 0 400 580" /></svg>
         <svg className={styles.overviewArc} viewBox="0 0 560 600" fill="none" focusable="false"><path d="M160 20A280 280 0 0 1 160 580" /></svg>
@@ -33,10 +34,6 @@ export default function Links2WellbeingPage() {
         <svg className={styles.bottomArc} viewBox="0 0 560 600" fill="none" focusable="false"><path d="M160 20A280 280 0 0 1 160 580" /></svg>
       </div>
       <div className={styles.container}>
-        <nav className={`${styles.navigation} type-micro`} aria-label="Portfolio">
-          <Link href="/ux-service">← UX / SERVICE DESIGN</Link>
-          <Link href="/">HOME</Link>
-        </nav>
         <section className={styles.hero} aria-labelledby="project-title">
           <Reveal distance={6} className={styles.heroCopy}>
             <p className={`${styles.eyebrow} type-micro`}>SERVICE DESIGN / 2026</p>

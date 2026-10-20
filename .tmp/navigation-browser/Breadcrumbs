@@ -1,0 +1,125 @@
+0:00:05 Tab1 StartNav69 #renderer-script #link
+0:00:05 Tab1 FinishNav69
+0:00:05 Tab1 StartNav70 #typed
+0:00:05 Tab1 FinishNav70
+0:00:05 Tab1 StartNav71 #renderer-script #link
+0:00:05 Tab1 FinishNav71
+0:00:05 Tab1 PageLoad
+0:00:05 Tab1 StartNav72 #typed
+0:00:05 Tab1 FinishNav72
+0:00:05 Tab1 StartNav73 #renderer-script #link
+0:00:05 Tab1 FinishNav73
+0:00:05 Tab1 PageLoad
+0:00:05 Tab1 StartNav74 #typed
+0:00:05 Tab1 FinishNav74
+0:00:05 Tab1 StartNav75 #renderer-script #link
+0:00:05 Tab1 FinishNav75
+0:00:06 Tab1 PageLoad
+0:00:06 Tab1 StartNav76 #typed
+0:00:06 Tab1 FinishNav76
+0:00:06 Tab1 StartNav77 #renderer-script #link
+0:00:06 Tab1 FinishNav77
+0:00:06 Tab1 PageLoad
+0:00:06 Tab1 StartNav78 #typed
+0:00:06 Tab1 FinishNav78
+0:00:06 Tab1 StartNav79 #renderer-script #link
+0:00:06 Tab1 FinishNav79
+0:00:06 Tab1 PageLoad
+0:00:06 Tab3 StartNav80 #ntp #link
+0:00:06 Tab1 StartNav81 #typed
+0:00:06 Tab1 FinishNav81
+0:00:06 Tab1 StartNav82 #renderer-script #link
+0:00:06 Tab1 FinishNav82
+0:00:06 Tab1 PageLoad
+0:00:06 Tab1 StartNav83 #typed
+0:00:06 Tab1 FinishNav83
+0:00:06 Tab1 StartNav84 #renderer-script #link
+0:00:06 Tab1 FinishNav84
+0:00:06 Tab1 PageLoad
+0:00:06 Tab1 StartNav85 #typed
+0:00:06 Media.Hidden
+0:00:06 Tab1 FinishNav85
+0:00:06 Tab1 StartNav86 #renderer-script #link
+0:00:06 Tab1 FinishNav86
+0:00:06 Tab1 PageLoad
+0:00:06 Tab1 StartNav87 #typed
+0:00:06 Media.Hidden
+0:00:06 Tab1 FinishNav87
+0:00:06 Tab1 StartNav88 #renderer-script #link
+0:00:06 Tab1 FinishNav88
+0:00:06 Tab1 PageLoad
+0:00:06 Tab1 StartNav89 #typed
+0:00:06 Media.Hidden
+0:00:06 Tab3 FinishNav80
+0:00:06 Tab1 FinishNav89
+0:00:06 Tab1 StartNav90 #renderer-script #link
+0:00:06 Tab1 FinishNav90
+0:00:06 Tab1 PageLoad
+0:00:06 Tab1 StartNav91 #typed
+0:00:06 Media.Hidden
+0:00:06 Tab1 FinishNav91
+0:00:07 Tab1 StartNav92 #renderer-script #link
+0:00:07 Tab1 FinishNav92
+0:00:07 Tab1 PageLoad
+0:00:07 Tab3 PageLoad #ntp
+0:00:07 Tab1 StartNav93 #typed
+0:00:07 Tab1 FinishNav93
+0:00:07 Tab1 PageLoad
+0:00:07 Tab1 StartNav94 #renderer-script #link
+0:00:07 Tab1 FinishNav94
+0:00:07 Tab1 StartNav95 #typed
+0:00:07 Tab1 FinishNav95
+0:00:07 Tab1 StartNav96 #renderer-script #link
+0:00:07 Tab1 FinishNav96
+0:00:07 Tab1 PageLoad
+0:00:07 Tab1 StartNav97 #typed
+0:00:07 Tab1 FinishNav97
+0:00:07 Tab1 StartNav98 #renderer-script #link
+0:00:07 Tab1 FinishNav98
+0:00:07 Tab1 PageLoad
+0:00:07 Tab1 StartNav99 #typed
+0:00:07 Tab1 FinishNav99
+0:00:07 Tab1 StartNav100 #renderer-script #link
+0:00:07 Tab1 FinishNav100
+0:00:07 Tab1 PageLoad
+0:00:07 Tab1 StartNav101 #typed
+0:00:07 Tab1 FinishNav101
+0:00:07 Tab1 PageLoad
+0:00:07 Tab1 StartNav102 #renderer-script #link
+0:00:07 Tab1 FinishNav102
+0:00:07 Tab1 StartNav103 #typed
+0:00:07 Tab1 FinishNav103
+0:00:07 Tab1 StartNav104 #renderer-script #link
+0:00:07 Tab1 FinishNav104
+0:00:07 Tab1 PageLoad
+0:00:08 Tab1 StartNav105 #typed
+0:00:08 Tab1 FinishNav105
+0:00:08 Tab1 StartNav106 #renderer-script #link
+0:00:08 Tab1 FinishNav106
+0:00:08 Tab1 PageLoad
+0:00:08 Tab1 StartNav107 #typed
+0:00:08 Tab1 FinishNav107
+0:00:08 Tab1 StartNav108 #renderer-script #link
+0:00:08 Tab1 FinishNav108
+0:00:08 Tab1 PageLoad
+0:00:08 Tab1 StartNav109 #typed
+0:00:08 Tab1 FinishNav109
+0:00:08 Tab1 StartNav110 #renderer-script #link
+0:00:08 Tab1 FinishNav110
+0:00:08 Tab1 PageLoad
+0:00:08 Tab1 StartNav111 #typed
+0:00:08 Tab1 FinishNav111
+0:00:08 Tab1 StartNav112 #renderer-script #link
+0:00:08 Tab1 FinishNav112
+0:00:08 Tab1 PageLoad
+0:00:08 Tab1 StartNav113 #typed
+0:00:08 Tab1 FinishNav113
+0:00:08 Tab1 StartNav114 #renderer-script #link
+0:00:08 Tab1 FinishNav114
+0:00:08 Tab1 PageLoad
+0:00:08 Tab1 StartNav115 #typed
+0:00:08 Media.Hidden
+0:00:08 Tab1 FinishNav115
+0:00:08 Tab1 StartNav116 #renderer-script #link
+0:00:08 Tab1 FinishNav116
+0:00:08 Tab1 PageLoad

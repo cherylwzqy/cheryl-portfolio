@@ -33,34 +33,7 @@
   .bottomArc { display: none; }
 }
 
-.container { max-width: 1600px; margin-inline: auto; padding: 32px 12% 0; }
-.navigation { display: flex; justify-content: space-between; align-items: center; gap: 24px; letter-spacing: 0.12em; }
-.navigation a { position: relative; isolation: isolate; display: inline-flex; align-items: center; min-height: 44px; color: var(--l2w-teal-dark); text-decoration: none; }
-.navigation a:first-child { --navigation-glow: var(--l2w-teal-dark); }
-.navigation a:last-child { --navigation-glow: var(--l2w-orange); }
-.navigation a::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  left: 50%;
-  top: 50%;
-  width: calc(100% + 48px);
-  max-width: 200px;
-  height: 80px;
-  background: radial-gradient(ellipse,
-    color-mix(in srgb, var(--navigation-glow) var(--navigation-glow-strength, 50%), transparent),
-    color-mix(in srgb, var(--navigation-glow) 22%, transparent) 28%,
-    color-mix(in srgb, var(--navigation-glow) 7%, transparent) 50%, transparent 72%);
-  filter: blur(12px);
-  transform: translate(-50%, -50%);
-  /* Match the homepage's rhythm, delay, opacity range, and expansion. */
-  animation: navigationBreathe 3s ease-in-out 800ms infinite both;
-}
-.navigation a:is(:hover, :focus-visible) { --navigation-glow-strength: 65%; }
-.navigation a:hover { text-decoration: underline; text-underline-offset: 5px; }
-.navigation a:focus-visible { outline: 1px solid var(--l2w-teal); outline-offset: 5px; }
-
+.container { max-width: 1600px; margin-inline: auto; padding: calc(clamp(24px, 5svh, 56px) + 44px) 12% 0; }
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
@@ -304,10 +277,6 @@
 }
 
 @keyframes drawRing { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes navigationBreathe {
-  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); filter: blur(12px); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); filter: blur(16px); }
-}
 
 @media (min-width: 901px) {
   .metadata { grid-template-columns: 1.5fr 1.3fr minmax(160px, 1.1fr) 1.8fr; }
@@ -326,8 +295,6 @@
 }
 
 @media (max-width: 540px) {
-  .container { padding-top: 20px; }
-  .navigation { gap: 16px; letter-spacing: 0.08em; }
   .hero { padding-top: 40px; gap: 28px; }
   .eyebrow { margin-bottom: 24px; }
   .rings { width: 88%; }
@@ -336,6 +303,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .rings circle { animation: none; stroke-dashoffset: 0; }
-  .navigation a::before { animation: none; opacity: 0.65; transition: none; }
   .metadata a { transition: none; }
 }

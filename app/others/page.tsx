@@ -1,3 +1,4 @@
+import TopNavigation from "../components/top-navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,6 +28,7 @@ const projects = [
 export default function OtherWorksPage() {
   return (
     <main className={styles.page}>
+      <TopNavigation label="OTHER WORKS" />
       <TracesOfLight />
       <header className={styles.header}>
         <h1 className="type-h1">Other Works</h1>

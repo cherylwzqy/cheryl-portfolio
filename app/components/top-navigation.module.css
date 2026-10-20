@@ -1,0 +1,30 @@
+.navigation {
+  position: absolute;
+  z-index: 2;
+  top: clamp(24px, 5svh, 56px);
+  left: 12%;
+  right: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.navigation > * { min-width: 0; }
+.navigation a:first-child { padding-left: 0; }
+.navigation a:last-child { padding-right: 0; }
+.navigation a:focus-visible { outline: 1px solid var(--color-text-muted); outline-offset: 4px; }
+.label { color: #aaa8a2; letter-spacing: 0.16em; }
+
+/* Retain readable dark text on the existing light Links2Wellbeing page. */
+.light a { color: #454440; }
+.light a:is(:hover, :focus-visible) { color: #0a0a0a; }
+
+@media (max-width: 800px) {
+  .navigation { left: 8%; right: 8%; }
+  .navigation :global(.secondary-light) { max-width: calc(100% + 8vw); }
+}
+@media (max-width: 540px) {
+  .navigation { gap: 12px; }
+  .navigation a { padding-inline: 0; }
+}

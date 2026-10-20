@@ -1,5 +1,6 @@
 "use client";
 
+import TopNavigation from "./top-navigation";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image, { type StaticImageData } from "next/image";
@@ -104,6 +105,7 @@ export default function ProjectStage({ category, title, introduction, projects }
       data-category={category}
       data-lit={active !== null} data-cue={cue?.phase ?? "idle"}
       onPointerLeave={() => setHovered(null)}>
+      <TopNavigation label={title} />
       <div className={styles.light} aria-hidden="true">
         <div className={styles.beam} />
         <div className={styles.pool} />
